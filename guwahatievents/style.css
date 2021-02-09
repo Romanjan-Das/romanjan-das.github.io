@@ -17,8 +17,10 @@ body{
     text-align: center;
     color: rgb(59, 59, 59);
     box-sizing: border-box;
-    padding-top: 2vw;
+    padding-top: 2vw;/*
     box-shadow: 0.7vw 0vw 2vw 0.5vw  rgba(1, 90, 255, 0.2) ;
+    */
+    border-bottom: 1px solid gainsboro;
 }
 
 .top_banner_buffer{
@@ -41,10 +43,11 @@ body{
     border: 1px solid gainsboro;
 }
 
-
+/*
 .ad:hover{
     box-shadow: 0.7vw 0vw 2vw 0.5vw  rgba(1, 90, 255, 0.2) ;
 }
+*/
 
 .ad_image{
     height: 23vw;
@@ -56,9 +59,9 @@ body{
 
 .ad_type{
     height: 5vw;
-    color: rgb(0, 82, 41);
+    color: rgb(0, 55, 255);
     font-size: 4vw;
-    font-weight: 350;
+    font-weight: 400;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-left: 1vw;
     margin-bottom: 1vw;
@@ -67,7 +70,7 @@ body{
 
 .ad_title{
     font-size: 4.6vw;
-    font-weight: 350;
+    font-weight: 400;
     font-stretch: condensed;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: left;
@@ -83,10 +86,10 @@ body{
 .ad_date{
     position: absolute;
     font-size: 4vw;
-    font-weight: 350;
+    font-weight: 400;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: left;
-    color: rgb(109, 108, 108);
+    color: rgb(63, 214, 0);
     margin: 0px;
     margin-left: 1vw;
     background-color: white;
@@ -188,7 +191,9 @@ body{
 
 img.modal_icon{
     border-radius: 50%;
+    /*
     box-shadow: 0.7vw 0vw 2vw 0.5vw  rgba(1, 90, 255, 0.1) ;
+    */
 }
 
 
@@ -279,7 +284,7 @@ img.modal_icon{
     animation-duration: 8s;
     animation-iteration-count: 1;
 }
-
+/*
     #top_ad_main_div:active{
         animation-name: top_ad_main_div_animation;
         animation-duration: 80ms;
@@ -293,7 +298,7 @@ img.modal_icon{
         75%{transform: translateX(2vw);}
         100%{transform: translateX(0vw);}
     }
-
+*/
     /*---------------------------------------------------------*/
 
     #top_ad_main_div{
