@@ -13,7 +13,7 @@ xmlhttp_2.onreadystatechange = function () {
     }
 };
 //xmlhttp_2.open("GET", "https://test-site-romanjandas.000webhostapp.com/guwahati_local/glv2/data.json", true);
-xmlhttp_2.open("POST", "data.json", true);
+xmlhttp_2.open("POST", "https://romanjan-das.github.io/guwahatievents/data.json", true);
 xmlhttp_2.send();
 ////////////////////////////////////////////////////////////////
 
