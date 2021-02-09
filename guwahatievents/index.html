@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .logo {
+            position: absolute;
+            width: 55vw;
+            height: 55vw;
+            top: 30vw;
+            left: 23vw;
+            margin: 0px;
+            padding: 0px;
+            display: none;
+        }
+
+        .loader {
+            position: absolute;
+            border: 2vw solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 2vw solid #3498db;
+            width: 10vw;
+            height: 10vw;
+            top: 42vh;
+            left: 44vw;
+            margin: 0px;
+            padding: 0px;
+            animation: spin 700ms linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="logo"><!---<img src="images/guwahati_local_logo.jpg" height="100%" width="100%" alt="">---></div>
+    <div class="loader"></div>
+    <link rel="stylesheet" href="style.css" defer>
+    <script src="script.js" defer></script>
+</body>
+
+</html>
