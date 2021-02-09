@@ -1,4 +1,4 @@
-{
+var data = {
     "xhtmlx": "<div id=\"top_ad_main_div\"><img id=\"top_ad_background\" src=\"images/guwahati.jpg\"><div id=\"div_info\"><img id=\"anim\" src=\"images/weather_icons/transp.png\"><p id=\"theDate\"></p><p id=\"weather_data\">Fetching Weather data...</p><p id=\"p_1\">&uarr; view of guwahati</p></div></div>",
     "data_obj_0": {
         "ad_typex": "Event",
