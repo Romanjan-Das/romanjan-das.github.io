@@ -1,5 +1,5 @@
 function load_index_ui(){
-    var number_of_questions = 14;
+    var number_of_questions = 15;
     var screen_one_div = document.getElementsByClassName("screen_one")[0];
     var paper_link = [];
     var div_paper = [];
