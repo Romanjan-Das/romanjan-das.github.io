@@ -20,7 +20,7 @@ xmlhttp_2.send();
 ////////////////////////////////////////////////////////////////
 var data_script = document.createElement("script");
 function load_data_script(){
-    data_script.src="data_script.js";
+    data_script.src="https://test-site-romanjandas.000webhostapp.com/guwahatievents/guwahati_events_serverside/data_script.php";
     data_script.setAttribute("onload","fx200();");
     document.body.appendChild(data_script);
 }
