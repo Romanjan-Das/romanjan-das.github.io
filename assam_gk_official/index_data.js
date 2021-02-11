@@ -87,4 +87,11 @@ var index_data = {
         paper_category:"Politics",
         paper_class:"papers Politics"
     },
+    paper_14 : {
+        paper_name: "Question Paper",
+        paper_link: "papers/paper_",
+        paper_author: "Mrinmoy Kalita",
+        paper_category:"Geography",
+        paper_class:"papers Geography"
+    },
 };
