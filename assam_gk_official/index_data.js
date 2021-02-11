@@ -94,4 +94,12 @@ var index_data = {
         paper_category:"Geography",
         paper_class:"papers Geography"
     },
+    paper_15 : {
+        paper_name: "Question Paper",
+        paper_link: "papers/paper_",
+        paper_author: "Gunjan Das",
+        paper_category:"History",
+        paper_class:"papers History"
+    },
+    
 };
