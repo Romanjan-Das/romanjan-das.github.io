@@ -40,7 +40,7 @@ function load_index_ui(){
 
 function loadIndexData(){
     var index_data_script = document.createElement("script");
-    index_data_script.src="index_data.js";
+    index_data_script.src="index_data.js?v="+Math.random();
     index_data_script.setAttribute("onload","load_index_ui();"); 
     document.head.appendChild(index_data_script);
 }
