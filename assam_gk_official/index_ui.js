@@ -40,7 +40,10 @@ function load_index_ui(){
 
 function loadIndexData(){
     var index_data_script = document.createElement("script");
-    index_data_script.src="index_data.js?v="+Math.random();
+    //index_data_script.src="index_data.js?v="+Math.random();
+    var d = new Date();
+    var dateString = d.getDate().toString()+d.getMonth().toString()+d.getFullYear().toString();
+    index_data_script.src="index_data.js?v="+dateString;
     index_data_script.setAttribute("onload","load_index_ui();"); 
     document.head.appendChild(index_data_script);
 }
