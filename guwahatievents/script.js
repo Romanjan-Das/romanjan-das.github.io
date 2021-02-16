@@ -208,7 +208,7 @@ window.onpopstate = function () {
     
     modal.style.transform = "translate(0px,100vh)";
     modal.style.transition = "400ms";
-    setTimeout(function () { modal.remove(); }, 700);
+    setTimeout(function () { modal.remove(); }, 400);
     document.body.style.overflow = "auto";
     boolAdClickCheck = true;
     boolShowInfoCheck = true;
