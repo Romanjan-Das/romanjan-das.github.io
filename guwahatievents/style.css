@@ -31,7 +31,8 @@ body{
 .ad{
     position: relative;
     background-color:white;
-    height: 35vw;
+    /* height: 35vw; */
+    height: 30vw;
     width: 90vw;
     margin-left: 3vw;
     margin-top: 3vw;
@@ -94,6 +95,7 @@ body{
     margin-left: 1vw;
     background-color: white;
     bottom: 4vw;
+    display: none;
 }
 
 .bottom_buffer{
@@ -187,6 +189,7 @@ body{
     float: right;
     background-color: rgba(255, 255, 255, 0);
     animation: icon_animation 3s linear infinite;
+    display: none;
 }
 
 img.modal_icon{
@@ -213,7 +216,7 @@ img.modal_icon{
 
 .modal_text{
     margin: 6vw;
-    margin-top: 23vw;
+   /* margin-top: 23vw; */
     width: 90vw;
 }
 
@@ -253,6 +256,7 @@ img.modal_icon{
     animation-name: x3_animation;
     animation-duration: 5s;
     animation-iteration-count: infinite;
+    display: none;
 }
 
 @keyframes x3_animation{
