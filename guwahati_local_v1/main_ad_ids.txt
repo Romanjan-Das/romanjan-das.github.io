@@ -1,0 +1,55 @@
+
+
+var ad_id_main_* = {
+"text_1_cat":"event",
+"class_id":"event",
+"image_source":"https://test-site-romanjandas.000webhostapp.com/guwahati_local/images/20200330(1).jpg",
+"text_1":"Let's defeat COVID-19",
+"text_2":"We fight it together",
+"text_3":"Guwahati, 30 March 2020",
+};
+
+var ad_id_* = {
+"image1":"images/event_slide_1.jpg",
+"image2":"images/event_slide_2.jpg",
+"image3":"images/event_slide_3.jpg",
+"map_link":"https://goo.gl/maps/VFznp7rXwJ5GFhfP6",
+"wind_content":"- Guwahatians lets not lose hope.<br>- Stay indoors to prevent it from spreading<br>",
+"phone_link_1":"tel: NoNumber",
+"phone_link_text_1":" NoNumber",
+"phone_link_2":"tel: NoNumber",
+"phone_link_text_2":" NoNumber",
+"text_t1":"Let's defeat COVID-19",
+"text_t2":"Location: Guwahati",
+"text_t3":"Contact:  NoNumber  ,   NoNumber",
+"text_t4":"Published On: 30th March 2020",
+"text_t5":"Event Date: --/--/--",
+"text_t6":"Event Time: --/-- to --/--",
+};
+
+var ad_id_main_* = {
+"text_1_cat":"event",
+"class_id":"event",
+"image_source":"https://test-site-romanjandas.000webhostapp.com/guwahati_local/images/20200330(2).jpg",
+"text_1":"National Helpline",
+"text_2":"COVID-19 Helpline",
+"text_3":"Guwahati, 30 March 2020",
+};
+
+var ad_id_* = {
+"image1":"images/event_slide_1.jpg",
+"image2":"images/event_slide_2.jpg",
+"image3":"images/event_slide_3.jpg",
+"map_link":"https://goo.gl/maps/VFznp7rXwJ5GFhfP6",
+"wind_content":"- COVID-19 helpline phone number",
+"phone_link_1":"tel: +91-11-23978046",
+"phone_link_text_1":" +91-11-23978046",
+"phone_link_2":"tel: 1075",
+"phone_link_text_2":" 1075",
+"text_t1":"National Helpline",
+"text_t2":"Location: Guwahati",
+"text_t3":"Contact:  +91-11-23978046  ,   1075",
+"text_t4":"Published On: 30th March 2020",
+"text_t5":"Event Date: --/--/--",
+"text_t6":"Event Time: --/-- to --/--",
+};
