@@ -85,17 +85,21 @@ body{
 
 button{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 4vw;
-    color: white;
+    font-size: 5vw;
+    color: black;
     height: 5vh;
     width: 22vw;
-    background-color: rgb(0 196 190);
+    /*background-color: rgb(0 196 190);
     border-radius: 2vw;
-    border-color: rgb(0 196 190);
+    border-color: rgb(0 196 190);*/
+    background-color: white;
+    border: none;
+
 }
 
 button:disabled{
-    background-color: gainsboro;
+    color: white;
+    background-color: white;
     border-color: gainsboro;
 }
 

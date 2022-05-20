@@ -125,7 +125,7 @@ function load_ui(){
     var button_next = document.createElement("button");
     button_next.className = "next_button";
     button_next.id = "next_button";
-    button_next.innerHTML = " Done";
+    button_next.innerHTML = " Done &gt;";
     button_next.setAttribute("onclick","before_xyz();");
     div_bottom_panel.appendChild(button_next);
 

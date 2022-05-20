@@ -28,3 +28,9 @@
 .ca_e{
     display: none;
 }
+
+button{
+    color:black;
+    background-color: white;
+    border: none;
+}

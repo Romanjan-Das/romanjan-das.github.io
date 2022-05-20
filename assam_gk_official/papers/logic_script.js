@@ -124,7 +124,7 @@ function before_xyz(){
         document.getElementById("label_for_option_"+uu).style.textDecoration = "line-through 0.8vw";
     }
     document.getElementById("next_button").setAttribute("onclick","xyz();");
-    document.getElementById("next_button").innerHTML = " Next";
+    document.getElementById("next_button").innerHTML = " Next &gt;";
     
     document.getElementById("option_1").disabled = true;
     document.getElementById("option_2").disabled = true;
@@ -218,7 +218,7 @@ function xyz() {
                 document.getElementById("label_for_option_4").style.color="black";
                 document.getElementById("label_for_option_4").style.textDecoration = "none";
                 document.getElementById("next_button").setAttribute("onclick","before_xyz();");
-                document.getElementById("next_button").innerHTML = " Done";
+                document.getElementById("next_button").innerHTML = " Done &gt;";
                 console.log("x.correct: " + x.correct);
             }
             else {
