@@ -6,7 +6,7 @@ function load_index_ui(){
     var div_paper_name = [];
     var span_author_name = [];
     var span_paper_category = [];
-    var color_array=["#CCF3EE","#F9F3EE","#F9CEEE"];
+    var color_array=["#CCF3EE","#F9F3EE","#ffe4f8"]; //#ffe4f8  #F9CEEE
     var color_num=0;
 
 
