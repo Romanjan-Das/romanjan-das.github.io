@@ -20,3 +20,11 @@
 .ca_c {
     font-weight: bold;
 }
+
+.ca_d{
+    padding-top:50%;padding-left:12%;
+}
+
+.ca_e{
+    display: none;
+}
