@@ -1,7 +1,7 @@
 const ca_name=document.getElementsByTagName("ca_name");
 const ca_text=document.getElementsByTagName("ca_text");
 var i=-1;
-
+var end_reached=false;
 function next(x) {
     document.getElementById("timer").innerHTML="অসমীয়া সাধাৰণ জ্ঞান &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+document.getElementById("ca_date").innerText;
 
@@ -10,6 +10,7 @@ function next(x) {
             //do nothing
             document.getElementsByClassName("question_section ca_a")[0].style.opacity="0%";
             document.getElementsByClassName("question_section ca_a")[1].style.display="block";
+            end_reached=true;
         }
         else{
             i++;
@@ -21,6 +22,7 @@ function next(x) {
         if(i==ca_name.length-1){
             document.getElementsByClassName("question_section ca_a")[0].style.opacity="100%";
             document.getElementsByClassName("question_section ca_a")[1].style.display="none";
+            if(end_reached){i=i+1;end_reached=false;}
         }
         if(i>0){
             i=i-1;
