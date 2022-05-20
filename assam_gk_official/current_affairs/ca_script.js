@@ -3,13 +3,12 @@ const ca_text=document.getElementsByTagName("ca_text");
 var i=-1;
 
 function next(x) {
-    const d=new Date();
-    const month=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-    document.getElementById("timer").innerHTML="অসমীয়া সাধাৰণ জ্ঞান &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+d.getDate()+"-"+month[d.getMonth()]+"-"+d.getFullYear();
+    document.getElementById("timer").innerHTML="অসমীয়া সাধাৰণ জ্ঞান &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+document.getElementById("ca_date").innerText;
 
     if (x && i<ca_name.length) {
         if(i==ca_name.length-1){
             //do nothing
+            alert("You have reached the end");
         }
         else{
             i++;

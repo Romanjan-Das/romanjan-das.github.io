@@ -19,7 +19,7 @@ body{
     box-shadow: 0px 0px 5vw 1vw gainsboro;
     */
     color: white;
-    background-color: rgb(45, 45, 255);
+    background-color: rgb(0 196 190);
     box-shadow: 0px 0px 5vw 1vw gainsboro;
     
 }
@@ -89,9 +89,9 @@ button{
     color: white;
     height: 5vh;
     width: 22vw;
-    background-color: rgb(45, 45, 255);
+    background-color: rgb(0 196 190);
     border-radius: 2vw;
-    border-color: rgb(45, 45, 255);
+    border-color: rgb(0 196 190);
 }
 
 button:disabled{
