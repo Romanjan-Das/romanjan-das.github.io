@@ -98,7 +98,7 @@ function backgroundImageOnload() {
 
     myResume = el(xdiv, xbody, "myResume");
 
-    myResume.innerHTML = "<a href=\"mailto:romanjandas.mail@gmail.com\"> Send me a mail ></a>";
+    myResume.innerHTML = "<a href=\"mailto:romanjandas.mail@gmail.com\"> Mail me ></a>";
 
     manipulateInnerHTML();
 
