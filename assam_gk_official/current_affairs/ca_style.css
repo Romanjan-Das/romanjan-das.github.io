@@ -1,0 +1,22 @@
+.ca_a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30%;
+    box-sizing: border-box;
+}
+
+.ca_b {
+    width: 80vw;
+    line-height: 125%;
+    color: rgb(125, 126, 126);
+    font-size: larger;
+    padding: 2vw;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.ca_c {
+    font-weight: bold;
+}
