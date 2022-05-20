@@ -6,6 +6,8 @@ function load_index_ui(){
     var div_paper_name = [];
     var span_author_name = [];
     var span_paper_category = [];
+    var color_array=["#CCF3EE","#F9F3EE","#F9CEEE"];
+    var color_num=0;
 
 
     ///for(i=1;i<=number_of_questions;i++){
@@ -15,6 +17,14 @@ function load_index_ui(){
     
         div_paper[i] = document.createElement("div");
         div_paper[i].className = eval("index_data.paper_"+i+".paper_class");
+        if(color_num==color_array.length-1){
+            div_paper[i].style.backgroundColor=color_array[color_num];
+            color_num=0;
+        }
+        else{
+            div_paper[i].style.backgroundColor=color_array[color_num];
+            color_num++;
+        }
         paper_link[i].appendChild(div_paper[i]);
     
         div_paper_name[i] = document.createElement("div");
