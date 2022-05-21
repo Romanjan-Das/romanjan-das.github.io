@@ -310,3 +310,8 @@ a:link{
     animation-duration: 200ms;
     animation-iteration-count: 5;
 }
+
+label{
+    position: fixed;
+    width: 80%;
+}
