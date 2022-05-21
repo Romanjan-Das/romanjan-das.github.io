@@ -313,5 +313,6 @@ a:link{
 
 label{
     position: fixed;
-    width: 80%;
+    margin-left:1%;
+    margin-right: 11%;
 }
