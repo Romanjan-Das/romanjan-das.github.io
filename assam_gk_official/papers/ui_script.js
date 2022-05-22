@@ -6,6 +6,23 @@ function load_logic_script(){
 }
 
 function load_ui(){
+    var link1=document.createElement("link");
+    link1.rel="preconnect";
+    link1.href="https://fonts.googleapis.com";
+    document.head.appendChild(link1);
+
+    var link2=document.createElement("link");
+    link2.rel="preconnect";
+    link2.crossOrigin="";
+    link2.href="https://fonts.gstatic.com";
+    document.head.appendChild(link2);
+
+    var link3=document.createElement("link");
+    link3.rel="stylesheet";
+    link3.href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap";
+    document.head.appendChild(link3);
+
+
     var div_top_panel = document.createElement("div");
     div_top_panel.className = "top_panel";
     div_top_panel.id = "top_panel";
@@ -13,7 +30,7 @@ function load_ui(){
     var span_timer = document.createElement("span");
     span_timer.className = "timer";
     span_timer.id = "timer";
-    span_timer.innerHTML = "Assam General Knowledge &nbsp;&nbsp;&nbsp;&nbsp; 0 m : 0 s";
+    span_timer.innerHTML = "Assam General Knowledge &nbsp;&nbsp;0 m : 0 s";
     div_top_panel.appendChild(span_timer);
 
     var span_asg = document.createElement("span");
