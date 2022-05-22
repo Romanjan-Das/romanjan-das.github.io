@@ -27,14 +27,8 @@
     </div>
     <div class="question_section ca_a">
         <div class="ca_b">
-            <span class="ca_c" id="ca_title">Definition of Current Affairs</span><br><br>
-            <div id="ca_content">
-                Current affairs is a genre of broadcast journalism in which major news stories are discussed at length
-                in a
-                timely manner. This differs from regular news broadcasts that place emphasis on news reports presented
-                for
-                simple presentation as soon as
-            </div>
+            <span class="ca_c" id="ca_title"></span><br><br>
+            <div id="ca_content"></div>
 
         </div>
     </div>
