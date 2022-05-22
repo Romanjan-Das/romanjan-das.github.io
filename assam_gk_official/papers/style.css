@@ -306,3 +306,9 @@ label{
     margin-left:1%;
     margin-right: 11%;
 }
+
+@media only screen and (orientation: landscape) {
+    body {
+      opacity: 0%;
+    }
+  }

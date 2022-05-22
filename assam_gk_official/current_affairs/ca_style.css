@@ -33,3 +33,9 @@ button{
     background-color: white;
     border: none;
 }
+
+@media only screen and (orientation: landscape) {
+    body {
+      opacity: 0%;
+    }
+  }
