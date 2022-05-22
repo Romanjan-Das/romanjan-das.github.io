@@ -1,4 +1,5 @@
 body{
+    font-family: 'Varela Round', sans-serif;
     overscroll-behavior: none;
     margin: 0px;
 }
@@ -25,7 +26,6 @@ body{
 }
 
 .bottom_panel{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: fixed;
     z-index: 2;
     left: 0vw;
@@ -69,7 +69,6 @@ body{
 
 
 .the_question{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 5vw;
     margin-left: 5vw;
     margin-right: 7vw;
@@ -78,13 +77,11 @@ body{
 }
 
 .the_options{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 5vw;
     margin: 3vw;
 }
 
 button{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 4vw;
     color: white;
     height: 5vh;
@@ -123,13 +120,11 @@ button:disabled{
 
 .timer{
     /* margin-left: 38vw; */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-left: 5.5vw;
     font-size: 5vw;
 }
 
 .results_div{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 5vw;
     padding: 3vw;
     padding-top: 20vh;
@@ -143,7 +138,6 @@ button:disabled{
 }
 
 .x_question{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 5vw;
     width: 85vw;
     padding: 3vw;
@@ -153,7 +147,6 @@ button:disabled{
 }
 
 .x_answer{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 5vw;
     color: darkgreen;
     width: 85vw;
@@ -168,17 +161,14 @@ button:disabled{
     height: 8vh;
 }
 .big{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14vw;
     font-weight: bolder;
     color: blue;
 }
 .small{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 3vw;
 }
 .papers{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 95vw;
     min-height: 15vh;
     padding: 4vw;
@@ -240,7 +230,6 @@ a:link{
 }
 
 .xx_button{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 4vw;
     color: white;
     height: 5vh;
@@ -281,7 +270,6 @@ a:link{
 }
 
 .alert_dialog_div{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 5vw;
     text-align: center;
     margin-top: 65vw;

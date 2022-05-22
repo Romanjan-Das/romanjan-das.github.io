@@ -86,7 +86,7 @@ var timer_time = 0;
 var timer_time_minute = 0;
 function timer_func() {
     stringflx = timer_time_minute + " min : " + timer_time + " sec";
-    stringx = "অসমীয়া সাধাৰণ জ্ঞান &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + timer_time_minute + " min : " + timer_time + " sec";
+    stringx = "Assam General Knowledge &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + timer_time_minute + " m : " + timer_time + " s";
     document.getElementById("timer").innerHTML = stringx;
     if (timer_time == 60) {
         timer_time = 0;

@@ -13,13 +13,13 @@ function load_ui(){
     var span_timer = document.createElement("span");
     span_timer.className = "timer";
     span_timer.id = "timer";
-    span_timer.innerHTML = "অসমীয়া সাধাৰণ জ্ঞান &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 min : 0 sec";
+    span_timer.innerHTML = "Assam General Knowledge &nbsp;&nbsp;&nbsp;&nbsp; 0 m : 0 s";
     div_top_panel.appendChild(span_timer);
 
     var span_asg = document.createElement("span");
-    span_asg.setAttribute("style","display: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 5vw;");
+    span_asg.setAttribute("style","display: none; font-size: 5vw;");
     span_asg.id = "asg";
-    span_asg.innerHTML = "&nbsp;&nbsp;&nbsp;অসমীয়া সাধাৰণ জ্ঞান";
+    span_asg.innerHTML = "&nbsp;&nbsp;&nbsp;Assam General Knowledge";
     div_top_panel.appendChild(span_asg);
 
     document.body.appendChild(div_top_panel);
