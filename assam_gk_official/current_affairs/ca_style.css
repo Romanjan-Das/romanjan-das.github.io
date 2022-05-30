@@ -10,7 +10,8 @@
     width: 80vw;
     line-height: 125%;
     color: rgb(125, 126, 126);
-    font-size: larger;
+    font-size: medium;
+    line-height: 150%;
     padding: 2vw;
     box-sizing: border-box;
     text-align: center;
