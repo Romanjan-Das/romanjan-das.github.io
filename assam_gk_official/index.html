@@ -3,57 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questions</title>
+    <title>Assam Current Affairs and General Knowledge</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="papers/style.css">
-    <script src="index_ui.js"></script>
     <script>
-        function show_categories_menu(){
-            document.getElementById("proto_selector").innerHTML="";
-            document.getElementById("the_categories").style.display = "block";
-        }
-
-        function select_a_category(id_of_div){
-            document.getElementById("the_categories").style.display = "none";
-            document.getElementById("proto_selector").innerHTML=id_of_div.id;
-            if(id_of_div.id=="papers"){
-                document.getElementById("proto_selector").innerHTML="Showing all papers";
-            }
-            var items_all = document.getElementsByClassName("papers").length;
-            for(i=0;i<items_all;i++){
-            document.getElementsByClassName("papers")[i].style.display = "none";
-            }
-            var items = document.getElementsByClassName(id_of_div.id).length;
-            for(i=0;i<items;i++){
-            document.getElementsByClassName(id_of_div.id)[i].style.display = "block"
+        var color_num=0;
+        var color_array=["#CCF3EE","#F9F3EE","#ffe4f8"]; //#ffe4f8  #F9CEEE
+        var i=0;
+        function colorify(){
+            const ca_list=document.getElementsByClassName("papers");
+            console.log(ca_list.length);
+            for(i=0;i<ca_list.length;i++){
+                if(color_num==color_array.length-1){
+                    ca_list[i].style.backgroundColor=color_array[color_num];
+                    color_num=0;
+                }
+                else{
+                    ca_list[i].style.backgroundColor=color_array[color_num];
+                    color_num++;
+                }
             }
         }
     </script>
+
 </head>
-<body onload="loadIndexData();">
-    <div class="top_panel" id="top_panel"><span style="font-size: 5.5vw;">&nbsp;&nbsp;&nbsp; Assam General Knowledge</span></div>
+<body onload="colorify();">
+    <div class="top_panel" id="top_panel"><span style="font-size: 5vw;">&nbsp;&nbsp;&nbsp; Assam General Knowledge</span></div>
     <div class="x_panel"></div>
     <div class="screen_one">
-        <a href="ca.html"><img class="papers" id="ca_img" style="height: 200px; padding: 0px;" src="images/current_affairs.webp"></a>
-        </div>
+
+
+
+
+
+        <a href="current_affairs.html"><div class="papers">
+            <div class="xxy">Weekly Current Affairs</div>
+            <span class="author_name">Your weekly dose of current affairs.</span>
+            <span class="paper_category"></span>
+        </div></a>
+
+
+        <a href="gk_facts.html"><div class="papers">
+            <div class="xxy">Weekly General Knowledge</div>
+            <span class="author_name">Covering regional, national and international topics</span>
+            <span class="paper_category"></span>
+        </div></a>
+
+
+        <a href="gk_papers.html"><div class="papers">
+            <div class="xxy">GK Practice Papers</div>
+            <span class="author_name">Multiple choice questions</span>
+            <span class="paper_category"></span>
+        </div></a>
+
+
+    </div>
     </div>
     <div class="x_panel"></div>
     <div class="x_panel"></div>
-
-
-    <!------
-    <div class="bottom_panel" style="border-top: 1px solid gainsboro;">    
-        <div id="the_categories" style="display: none;">
-            <div class="inside_bottom_panel" id="History" onclick="select_a_category(this);">History</div> 
-            <div class="inside_bottom_panel" id="Politics" onclick="select_a_category(this);">Politics</div> 
-            <div class="inside_bottom_panel" id="Geography" onclick="select_a_category(this);">Geography</div> 
-            <div class="inside_bottom_panel" id="Science" onclick="select_a_category(this);">Science</div> 
-            <div class="inside_bottom_panel" id="papers" onclick="select_a_category(this);">All</div> 
-        </div>
-        <div class="inside_bottom_panel" onclick="show_categories_menu();" id="proto_selector">Showing all papers</div> 
-    </div>
-    ----->
 </body>
 </html>
