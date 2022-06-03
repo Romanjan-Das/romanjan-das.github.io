@@ -29,13 +29,40 @@
     </script>
 
 </head>
-<body onload="colorify();">
+<body onload="colorify(); fetch_text();">
     <div class="top_panel" id="top_panel"><span style="font-size: 5vw;">&nbsp;&nbsp;&nbsp; Assam GK & Current Affairs</span></div>
     <div class="x_panel"></div>
     <div class="screen_one">
 
 
-
+        <div id="quotes" style="width: 95vw;
+        display: flex; align-items: center; justify-content: center;
+        border: rgb(0 196 190) 2px solid;
+        min-height: 15vh;
+        padding: 2vw;
+        padding-bottom:4vw;
+        margin-left: 2.5vw;
+        margin-top: 6vw;
+        border-radius: 1vw;
+        box-sizing: border-box;
+        /*background-color: aliceblue;*/
+        font-style:italic;
+        text-align: center;"></div>
+        <script>
+            function fetch_text() {
+                var pathname="quotes/"+getRndInteger(1,300)+".txt";
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function () {
+                    document.getElementById("quotes").innerHTML = this.responseText;
+                }
+                xhttp.open("GET", pathname, true);
+                xhttp.send();
+            }
+    
+            function getRndInteger(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+        </script>
 
 
         <a href="current_affairs.html"><div class="papers">
