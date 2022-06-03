@@ -6,7 +6,7 @@ var color_num=0;
 //var color_array=["#CCF3EE","#F9F3EE","#F9CEEE"];
 var color_array=["#FFFFFF","#FFFFFF","#FFFFFF"];
 function next(x) {
-    document.getElementById("timer").innerHTML="Assam General Knowledge &nbsp;&nbsp;&nbsp;"+document.getElementById("ca_date").innerText;
+    document.getElementById("timer").innerHTML="Current Affairs &nbsp;&nbsp;&nbsp;"+document.getElementById("ca_date").innerText;
 
     if (x && i<ca_name.length) {
         if(i==ca_name.length-1){

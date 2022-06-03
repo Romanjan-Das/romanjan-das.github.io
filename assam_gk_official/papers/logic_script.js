@@ -86,7 +86,7 @@ var timer_time = 0;
 var timer_time_minute = 0;
 function timer_func() {
     stringflx = timer_time_minute + " min : " + timer_time + " sec";
-    stringx = "Assam General Knowledge &nbsp;&nbsp;" + timer_time_minute + " m : " + timer_time + " s";
+    stringx = "General Knowledge &nbsp;&nbsp;" + timer_time_minute + " m : " + timer_time + " s";
     document.getElementById("timer").innerHTML = stringx;
     if (timer_time == 60) {
         timer_time = 0;
@@ -236,6 +236,7 @@ function xyz() {
                 document.getElementsByClassName("the_question")[0].remove();
                 document.getElementsByClassName("the_options")[0].remove();
                 document.getElementById("timer").remove();
+                document.getElementById("asg").innerHTML="&nbsp;&nbsp;&nbsp;Assam GK & Current Affairs";
                 document.getElementById("asg").style.display="block";
 
                 var m = document.createElement("div");

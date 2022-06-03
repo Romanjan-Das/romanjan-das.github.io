@@ -14,7 +14,7 @@
 
 <body onload="next(true)">
 
-    <div class="top_panel" id="top_panel"><span class="timer" id="timer"></span><span
+    <div class="top_panel" id="top_panel"><div class="timer" id="timer"></div><span
             style="display: none; font-size: 5vw;"
             id="asg">&nbsp;&nbsp;&nbsp;Assam General Knowledge</span></div>
     <div class="bottom_panel">
@@ -46,27 +46,7 @@
 
     <ca_data style="display: none;">
 
-        <ca_date id="ca_date"></ca_date>
-
-        <ca_section>
-            <ca_name></ca_name>
-            <ca_text></ca_text>
-        </ca_section>
-
-        <ca_section>
-            <ca_name></ca_name>
-            <ca_text></ca_text>
-        </ca_section>
-
-        <ca_section>
-            <ca_name></ca_name>
-            <ca_text></ca_text>
-        </ca_section>
-
-        <ca_section>
-            <ca_name></ca_name>
-            <ca_text></ca_text>
-        </ca_section>
+        <ca_date id="ca_date">00-00 Mon</ca_date>
 
         <ca_section>
             <ca_name></ca_name>

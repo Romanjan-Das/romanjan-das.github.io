@@ -124,7 +124,9 @@ button:disabled{
 
 .timer{
     /* margin-left: 38vw; */
-    margin-left: 5.5vw;
+    /*margin-left: 5.5vw;*/
+    width: 100%;
+    text-align: center;
     font-size: 5vw;
 }
 

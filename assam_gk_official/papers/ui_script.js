@@ -27,10 +27,10 @@ function load_ui(){
     div_top_panel.className = "top_panel";
     div_top_panel.id = "top_panel";
 
-    var span_timer = document.createElement("span");
+    var span_timer = document.createElement("div");
     span_timer.className = "timer";
     span_timer.id = "timer";
-    span_timer.innerHTML = "Assam General Knowledge &nbsp;&nbsp;0 m : 0 s";
+    span_timer.innerHTML = "General Knowledge &nbsp;&nbsp;0 m : 0 s";
     div_top_panel.appendChild(span_timer);
 
     var span_asg = document.createElement("span");
