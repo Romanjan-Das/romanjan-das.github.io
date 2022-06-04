@@ -8,29 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="papers/style.css">
-    <script>
-        var color_num=0;
-        var color_array=["#CCF3EE","#F9F3EE","#ffe4f8"]; //#ffe4f8  #F9CEEE
-        var i=0;
-        function colorify(){
-            const ca_list=document.getElementsByClassName("papers");
-            console.log(ca_list.length);
-            for(i=0;i<ca_list.length;i++){
-                if(color_num==color_array.length-1){
-                    ca_list[i].style.backgroundColor=color_array[color_num];
-                    color_num=0;
-                }
-                else{
-                    ca_list[i].style.backgroundColor=color_array[color_num];
-                    color_num++;
-                }
-            }
-        }
-    </script>
 
 </head>
 
-<body onload="colorify(); fetch_text();">
+<body onload="fetch_text();">
     <div class="top_panel" id="top_panel"><span style="font-size: 5vw;">&nbsp;&nbsp;&nbsp; Assam GK & Current Affairs</span></div>
     <div class="x_panel"></div>
     <div class="screen_one">
@@ -48,7 +29,7 @@
         box-sizing: border-box;
         /*background-color: aliceblue;*/
         font-style:italic;
-        text-align: center;"></div>
+        text-align: center;">Loading a wonderful quote for you...</div>
         <script>
             function fetch_text() {
                 var pathname="quotes/"+getRndInteger(1,300)+".txt";
