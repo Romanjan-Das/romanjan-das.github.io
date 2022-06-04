@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#000000">
+
+    <title>Hi,I'm Romanjan</title>
+
+    <style>
+        /*
+
+        .loader_text{
+
+            position: absolute;
+
+            top: 45vh;
+
+            left: 39vw;
+
+            text-align: center;
+
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            font-size: 7vw;
+
+            color: rgb(255, 255, 255);
+
+            animation: loader_text-animation 2s ease-in-out infinite;
+
+        }
+
+        @keyframes loader_text-animation {
+
+            0%{opacity: 1;}
+
+            50%{opacity: 0;}
+
+            100%{opacity: 1;}
+
+        }
+
+        */
+
+        body {
+
+            background-color: rgb(83, 83, 83);
+
+        }
+
+        .loader {
+
+            position: absolute;
+
+            top: 40vh;
+
+            left: 44vw;
+
+            width: 12vw;
+
+            height: 12vw;
+
+            border-width: 2vw;
+
+            border-style: solid;
+
+            border-radius: 50%;
+
+            border-color: rgb(219, 219, 219);
+
+            border-top-color: rgb(0, 179, 211);
+
+            animation: loader_animation 500ms linear infinite;
+
+        }
+
+        @keyframes loader_animation {
+
+            to {
+                transform: rotate(0deg);
+            }
+
+            from {
+                transform: rotate(-360deg);
+            }
+
+        }
+
+        @media only screen and (orientation: landscape) {
+
+            .loader {
+
+                position: absolute;
+
+                top: 40vh;
+
+                left: 44vw;
+
+                width: 12vh;
+
+                height: 12vh;
+
+                border-width: 2vh;
+
+                border-style: solid;
+
+                border-radius: 50%;
+
+                border-color: rgb(219, 219, 219);
+
+                border-top-color: rgb(0, 179, 211);
+
+            }
+
+        }
+    </style>
+    <style>
+        html {
+
+            scroll-behavior: smooth;
+
+            overflow-x: hidden;
+
+        }
+
+        body {
+
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            color: white;
+
+        }
+
+        a {
+
+            color: rgb(194, 194, 194);
+
+            text-decoration: none;
+
+        }
+
+
+
+        .backgroundImage {
+
+            position: absolute;
+
+            left: 0px;
+
+            top: 0px;
+
+            height: 100vh;
+
+            width: 100vw;
+
+            display: none;
+
+        }
+
+        .myGreetings {
+
+            position: absolute;
+
+            top: 35vw;
+
+            left: 11vw;
+
+            width: 78vw;
+
+            font-size: 14vw;
+
+            font-weight: 500;
+
+            font-stretch: narrower;
+
+            text-shadow: 1.5vw 1.5vw 4vw rgb(71, 71, 71);
+
+            /*
+
+animation: myGreetingsAnimation 2s;
+
+*/
+
+        }
+
+        @keyframes myGreetingsAnimation {
+
+            0% {
+                opacity: 0;
+                transform: translateY(-35vh);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0vh);
+            }
+
+        }
+
+
+
+        .myProjects {
+
+            position: absolute;
+
+            top: 83.5vw;
+
+            left: 11vw;
+
+            padding: 3vw;
+
+            font-size: 6vw;
+
+            font-weight: 500;
+
+            /*
+
+border-style: solid;
+
+border-width: 0.4vw;
+
+border-color: rgb(141, 141, 141);
+
+border-radius: 1vw;
+
+*/
+
+            background-color: rgba(0, 0, 0, 0.200);
+
+            /*
+
+animation: myProjectAnimation 2s;
+
+*/
+
+        }
+
+        @keyframes myProjectAnimation {
+
+            0% {
+                opacity: 0;
+                transform: translateX(100vw);
+            }
+
+            25% {
+                opacity: 0;
+                transform: translateX(100vw);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0vw);
+            }
+
+        }
+
+        .myResume {
+
+            position: absolute;
+
+            top: 100vw;
+
+            left: 11vw;
+
+            padding: 3vw;
+
+            font-size: 6vw;
+
+            font-weight: 500;
+
+            /*
+
+border-style: solid;
+
+border-width: 0.4vw;
+
+border-color: rgb(141, 141, 141);
+
+border-radius: 1vw;
+
+*/
+
+            background-color: rgba(0, 0, 0, 0.200);
+
+            /*
+
+animation: myResumeAnimation 2300ms;
+
+*/
+
+        }
+
+        @keyframes myResumeAnimation {
+
+            0% {
+                opacity: 0;
+                transform: translateX(100vw);
+            }
+
+            40% {
+                opacity: 0;
+                transform: translateX(100vw);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0vw);
+            }
+
+        }
+
+
+
+        .ProjectSectiondiv {
+
+            position: absolute;
+
+            top: 100vh;
+
+            left: 0px;
+
+            width: 100vw;
+
+            height: 100vh;
+
+        }
+
+        .Project_1 {
+
+            margin-left: 5vw;
+
+            margin-top: 5vw;
+
+            padding: 3vw;
+
+            height: 40vw;
+
+            width: 90vw;
+
+            box-sizing: border-box;
+
+            border-style: solid;
+
+            border-width: 0.5vw;
+
+            border-radius: 2vw;
+
+        }
+
+
+
+        .Project_1:hover {
+
+            background-color: rgb(114, 114, 114);
+
+        }
+
+
+
+        .Project_name {
+
+            font-size: 6vw;
+
+            font-weight: bold;
+
+        }
+
+        .Project_details {
+
+            font-size: 4vw;
+
+        }
+
+
+
+        .myCardDiv {
+
+            height: 60vh;
+
+            width: 90vw;
+
+            padding-top: 45vh;
+
+            padding-left: 5vw;
+
+        }
+
+        .myEmail {
+
+            width: 90vw;
+
+            padding: 2vw;
+
+            box-sizing: border-box;
+
+            font-size: 6.5vw;
+
+            text-align: center;
+
+            border-style: solid;
+
+            border-color: white;
+
+            border-width: 0.5vw;
+
+            border-radius: 1vw;
+
+        }
+
+        .email_class {
+
+            color: white;
+
+        }
+
+
+
+        @media only screen and (orientation: landscape) {
+
+            html {
+
+                scroll-behavior: smooth;
+
+                overflow-x: hidden;
+
+            }
+
+            .backgroundImage {
+
+                position: absolute;
+
+                left: 0px;
+
+                top: 0px;
+
+                height: 100vh;
+
+                width: 100vw;
+
+                display: none;
+
+            }
+
+            .myGreetings {
+
+                position: absolute;
+
+                top: 20vh;
+
+                left: 11vh;
+
+                width: 78vw;
+
+                font-size: 14vh;
+
+                font-weight: 500;
+
+                font-stretch: narrower;
+
+                text-shadow: 1.5vh 1.5vh 4vh rgb(71, 71, 71);
+
+                /*
+
+    animation: myGreetingsAnimation 2s;
+
+    */
+
+            }
+
+            @keyframes myGreetingsAnimation {
+
+                0% {
+                    opacity: 0;
+                    transform: translateY(-35vh);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateY(0vh);
+                }
+
+            }
+
+
+
+            .myProjects {
+
+                position: absolute;
+
+                top: 60vh;
+
+                left: 11vh;
+
+                padding: 2vh;
+
+                font-size: 4vh;
+
+                font-weight: 500;
+
+
+
+                border-style: solid;
+
+                border-width: 0.24vh;
+
+                border-color: rgb(141, 141, 141);
+
+                border-radius: 1vh;
+
+                background-color: rgba(0, 0, 0, 0.322);
+
+                /*
+
+    animation: myProjectAnimation 2s;
+
+    */
+
+            }
+
+            @keyframes myProjectAnimation {
+
+                0% {
+                    opacity: 0;
+                    transform: translateX(100vw);
+                }
+
+                25% {
+                    opacity: 0;
+                    transform: translateX(100vw);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateX(0vw);
+                }
+
+            }
+
+            .myResume {
+
+                position: absolute;
+
+                top: 72vh;
+
+                left: 40vw;
+
+                margin: auto;
+
+                padding: 2vh;
+
+                font-size: 4vh;
+
+                font-weight: 500;
+
+
+                /*
+    border-style: solid;
+
+    border-width: 0.24vh;
+
+    border-color: rgb(141, 141, 141);
+
+    border-radius: 1vh;
+
+    
+*/
+                background-color: rgba(0, 0, 0, 0.322);
+
+                /*
+
+    animation: myResumeAnimation 2300ms;
+
+    */
+
+            }
+
+            .myResume:hover {
+                background-color: rgba(0, 0, 0, 0.664);
+            }
+
+            @keyframes myResumeAnimation {
+
+                0% {
+                    opacity: 0;
+                    transform: translateX(100vw);
+                }
+
+                40% {
+                    opacity: 0;
+                    transform: translateX(100vw);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateX(0vw);
+                }
+
+            }
+
+
+
+            .ProjectSectiondiv {
+
+                position: absolute;
+
+                top: 100vh;
+
+                left: 0px;
+
+                width: 100vw;
+
+                height: 100vh;
+
+            }
+
+            .Project_1 {
+
+                margin-left: 10vh;
+
+                margin-top: 10vh;
+
+                padding: 2vh;
+
+                height: 18vw;
+
+                width: 25vw;
+
+                box-sizing: border-box;
+
+                border-style: solid;
+
+                border-width: 0.3vh;
+
+                border-radius: 1vh;
+
+                float: left;
+
+            }
+
+            .Project_name {
+
+                font-size: 3.5vh;
+
+                font-weight: bold;
+
+            }
+
+            .Project_details {
+
+                font-size: 3vh;
+
+            }
+
+
+
+            .myCardDiv {
+                /*
+
+    position: relative;
+
+    height: 60vh;
+
+    width: 90vw;
+
+    padding-top: 45vh;
+
+    padding-left: 10vh;*/
+
+                margin-top: 45vh;
+
+                height: 18vw;
+
+                float: left;
+
+            }
+
+            .myEmail {
+
+                width: 87vw;
+
+                margin-bottom: 45vh;
+
+                padding: 2vh;
+
+                box-sizing: border-box;
+
+                font-size: 6vh;
+
+                text-align: center;
+
+                border-style: solid;
+
+                border-color: white;
+
+                border-width: 0.4vh;
+
+                border-radius: 1vh;
+
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--
+
+    <div class="loader_text">
+
+        Loading
+
+    </div>-->
+
+    <div class="loader"></div>
+
+    <script>
+        {
+
+            var xbody = document.body;
+
+            var xspan = "span";
+
+            var xp = "p";
+
+            var xdiv = "div";
+
+            var ximg = "img";
+
+            var xclass = undefined;
+
+            var xid = undefined;
+
+            var xonclick = undefined;
+
+            function el(xtype, xnode, xclass, xid, xonclick) {
+
+                var xxxx = document.createElement(xtype);
+
+                xnode.appendChild(xxxx);
+
+
+
+                if (xclass != undefined) {
+
+                    xxxx.setAttribute("class", xclass);
+
+                }
+
+                if (xid != undefined) {
+
+                    xxxx.setAttribute("id", xid);
+
+                }
+
+                if (xonclick != undefined) {
+
+                    xxxx.setAttribute("onclick", xonclick);
+
+                }
+
+                xclass = undefined;
+
+                xid = undefined;
+
+                xonclick = undefined;
+
+                return xxxx;
+
+            }
+
+        }
+
+
+
+        /*
+        
+        var top_banner = el(xdiv,xbody,"top_banner");
+        
+        */
+
+        var backgroundImage = el(ximg, xbody, "backgroundImage");
+
+        console.log(screen.width, screen.height);
+
+        if (screen.height > screen.width) {
+
+            backgroundImage.src = "images/backgroundImage_mobile.jpg";
+
+        }
+
+        else {
+
+            backgroundImage.src = "images/backgroundImage.jpg";
+
+        }
+
+        backgroundImage.setAttribute("onload", "backgroundImageOnload();");
+
+        var myGreetings; var myResume; var myProjects; var str = "Hello,I'm Romanjan"; var i = 0;
+
+        function backgroundImageOnload() {
+
+            document.getElementsByClassName("loader")[0].remove();
+
+            backgroundImage.style.display = "block";
+
+            myGreetings = el(xdiv, xbody, "myGreetings");
+
+            myGreetings.innerHTML = "|";
+
+            //myProjects = el(xdiv, xbody, "myProjects");
+
+            //myProjects.innerHTML = "<a href=\"#my_projects\">View my Projects ></a>";
+
+            myResume = el(xdiv, xbody, "myResume");
+
+            myResume.innerHTML = "<a href=\"mailto:romanjandas.mail@gmail.com\"> Mail me ></a>";
+
+            manipulateInnerHTML();
+
+            //myProjectsSection();
+
+            //myCardSection();
+
+        }
+
+
+
+        function manipulateInnerHTML() {
+
+            var i = 0;
+
+            var ObjsetInterval = setInterval(() => {
+
+                i++;
+
+                if (i < 19) {
+
+                    myGreetings.innerHTML = "Hello,I'm Romanjan".substr(0, i);
+
+                    myGreetings.innerHTML += "|";
+
+                }
+
+                if (i > 28 && i < 49) {
+
+                    // clearInterval(ObjsetInterval);
+
+                    myGreetings.innerHTML = "Hello,I'm Romanjan".substr(0, 48 - i);
+
+                    myGreetings.innerHTML += "|";
+
+                }
+
+                if (i > 48 && i < 75) {
+
+                    // clearInterval(ObjsetInterval);
+
+                    myGreetings.innerHTML = "I am a web developer".substr(0, i - 47);
+
+                    myGreetings.innerHTML += "|";
+
+                }
+
+                if (i > 74 && i < 96) {
+
+                    // clearInterval(ObjsetInterval);
+
+                    myGreetings.innerHTML = "I am a web developer".substr(0, 95 - i);
+
+                    myGreetings.innerHTML += "|";
+
+                }
+
+                if (i > 95 && i < 120) {
+
+                    // clearInterval(ObjsetInterval);
+
+                    myGreetings.innerHTML = "HTML,CSS, Javascript".substr(0, i - 95);
+
+                    myGreetings.innerHTML += "|";
+
+                }
+
+                if (i > 119 && i < 145) {
+
+                    // clearInterval(ObjsetInterval);
+
+                    myGreetings.innerHTML = "HTML,CSS, Javascript".substr(0, 144 - i);
+
+                    myGreetings.innerHTML += "|";
+
+                }
+
+                if (i > 144 && i < 170) {
+
+                    // clearInterval(ObjsetInterval);
+
+                    myGreetings.innerHTML = "PHP,MySQL, Wordpress".substr(0, i - 144);
+
+                    myGreetings.innerHTML += "|";
+
+                }
+
+                if (i > 169 && i < 198) {
+
+                    // clearInterval(ObjsetInterval);
+
+                    myGreetings.innerHTML = "PHP,MySQL, Wordpress".substr(0, 197 - i);
+
+                    myGreetings.innerHTML += "|";
+
+                }
+
+                if (i > 200) {
+
+                    clearInterval(ObjsetInterval);
+
+                    i = 0;
+
+                    manipulateInnerHTML();
+
+                }
+
+            }, 150);
+
+        }
+
+
+
+        var ProjectSectiondiv; var Project_1; var Project_name; var Project_details;
+
+        function myProjectsSection() {
+
+            ProjectSectiondiv = el(xdiv, xbody, "ProjectSectiondiv", "my_projects");
+
+            Project_1 = el(xdiv, ProjectSectiondiv, "Project_1");
+
+            Project_name = el(xspan, Project_1, "Project_name");
+
+            Project_name.innerHTML = "Guwahati Events and Offers";
+
+            Project_details = el(xp, Project_1, "Project_details");
+
+            Project_details.innerHTML = "It is an app based on web technologies, for finding latest events and offers in Guwahati City.";
+
+
+
+            var Project_2 = Project_1.cloneNode(true);
+
+            ProjectSectiondiv.appendChild(Project_2);
+
+
+
+            var Project_3 = Project_1.cloneNode(true);
+
+            ProjectSectiondiv.appendChild(Project_3);
+
+
+
+            var Project_4 = Project_1.cloneNode(true);
+
+            ProjectSectiondiv.appendChild(Project_4);
+
+
+
+            var Project_5 = Project_1.cloneNode(true);
+
+            ProjectSectiondiv.appendChild(Project_5);
+
+
+
+            var Project_6 = Project_1.cloneNode(true);
+
+            Project_6.style.marginBottom = "5vw";
+
+            ProjectSectiondiv.appendChild(Project_6);
+
+        }
+
+
+
+        var myCardDiv;
+
+        function myCardSection() {
+
+            myCardDiv = el(xdiv, ProjectSectiondiv, "myCardDiv", "mycard_id");
+
+            myEmail = el(xdiv, myCardDiv, "myEmail");
+
+            myEmail.innerHTML = "<a class=\"email_class\" href=\"mailto:romanjandas@outlook.com\">romanjandas@outlook.com</a>";
+
+        }
+    </script>
+
+</body>
+
+</html>
