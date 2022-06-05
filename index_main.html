@@ -16,9 +16,10 @@
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
+            background-color: black;
         }
         body {
-            background-color: rgb(83, 83, 83);
+            background-color: black;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
         }
@@ -80,7 +81,7 @@
             }
         }
 
-        .nav_bar{display:flex;align-items: center;position: fixed;top:0px;left:0px;height:50px;width:100%;background-color:rgba(0, 0, 0, 0.526);margin:0px;color:white;}
+        .nav_bar{display:flex;align-items: center;position: fixed;top:0px;left:0px;height:50px;width:100%;background-color:black;margin:0px;color:white;}
         .nav_items{margin-left:50px;cursor: pointer;} .nav_items:hover{text-shadow: 0px 0px gainsboro;}
         .works{width: 100%; height: 100vh;background-color: rgba(0, 0, 0, 0.526);box-sizing: border-box;padding:5%;padding-top: 5%;}
         .works_inside{width: 97%;height:80%;background-color:white;display: flex;justify-content: center;} .works_inside>img{height: 0px;opacity: 0;transition: 600ms;}
@@ -168,9 +169,49 @@
         }
     </script>
     <script>
-        function start_my_app_slides(){console.log("hello");var i=0;var j=1;var my_app_slides=document.getElementsByClassName("works_inside")[0].childNodes;
-        var mas=setInterval(() => {if(i==my_app_slides.length||i>my_app_slides.length){i=0;};if(i%2!=0){my_app_slides[j].style.height="0px";
-        my_app_slides[j].style.opacity="0";my_app_slides[i].style.height="100%";my_app_slides[i].style.opacity="1";j=i;}i++;}, 1500);} 
+        function start_my_app_slides(){
+            var my_app_img=document.getElementsByClassName("app_slides"); var m=1;
+            var my_site_img=document.getElementsByClassName("site_slides");
+            if(window.innerHeight<window.innerWidth){
+                for(m=1;m<5;m++){
+                    my_app_img[m-1].src="images/L"+m+".png";
+                }
+                my_site_img[0].src="images/SL1.png";
+                my_site_img[1].src="images/SL2.png";
+            }
+            else{
+                for(m=1;m<5;m++){
+                    my_app_img[m-1].src="images/P"+m+".png";
+                }
+                my_site_img[0].src="images/SP1.png";
+                my_site_img[1].src="images/SP2.png";
+            }
+            var i=0;var j=1;var my_app_slides=document.getElementsByClassName("works_inside")[0].childNodes;
+            var my_site_slides=document.getElementsByClassName("works_inside")[1].childNodes; var k=0; var l=1;
+            var mas=setInterval(() => {
+                if(i==my_app_slides.length||i>my_app_slides.length){
+                    i=0;
+                }
+                if(i%2!=0){
+                    my_app_slides[j].style.height="0px";
+                    my_app_slides[j].style.opacity="0";
+                    my_app_slides[i].style.height="100%";
+                    my_app_slides[i].style.opacity="1";
+                    j=i;
+                }i++;
+
+                if(k==my_site_slides.length||k>my_site_slides.length){
+                    k=0;
+                }
+                if(k%2!=0){
+                    my_site_slides[l].style.height="0px";
+                    my_site_slides[l].style.opacity="0";
+                    my_site_slides[k].style.height="100%";
+                    my_site_slides[k].style.opacity="1";
+                    l=k;
+                }k++;
+            }, 1500);
+        } 
     </script>
 
     <div class="nav_bar">
@@ -178,17 +219,23 @@
         <div class="nav_items" onclick="location.href='#my_apps'">My Apps</div>
         <div class="nav_items" onclick="location.href='https://play.google.com/store/apps/dev?id=5128058888955831755';">View in Playstore</div>
         <div class="nav_items" onclick="location.href='#my_sites'">My Sites</div>
-        <div class="nav_items" onclick="location.href='https://github.com/Romanjan-Das?tab=repositories';">Github Repo</div><div class="nav_items">Mail Me</div>
+        <div class="nav_items" onclick="location.href='https://github.com/Romanjan-Das?tab=repositories';">Github Repo</div>
+        <div class="nav_items" onclick="location.href='mailto:romanjandas.mail@gmail.com'">Mail Me</div>
     </div>
     <div style="width: 100vw; height:300vh; background-color:rgba(0, 0, 0, 0.526);box-sizing: border-box;">
         <div id="home" class="works"></div>
-        <div id="my_apps" class="works"><div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Apps</div><div class="works_inside">
-        <img src="images/play.google.com_store_apps_details_id=com.luitporiaappdev.axomiasadharongyan (4).png">
-        <img src="images/play.google.com_store_apps_details_id=com.luitporiaappdev.axomiasadharongyan (1).png">
-        <img src="images/play.google.com_store_apps_details_id=com.luitporiaappdev.axomiasadharongyan (3).png">
-        <img src="images/play.google.com_store_apps_details_id=com.luitporiaappdev.axomiasadharongyan.png">
+        <div id="my_apps" class="works"><div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Apps</div>
+        <div class="works_inside">
+        <img class="app_slides" src="images/dummy.png">
+        <img class="app_slides" src="images/dummy.png">
+        <img class="app_slides" src="images/dummy.png">
+        <img class="app_slides" src="images/dummy.png">
         </div></div>
-        <div id="my_sites" class="works" style="height: 102vh;"><div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Sites</div><div class="works_inside"><img src="images/Screenshot 2022-06-05 135007.jpg"></div></div>
+        <div id="my_sites" class="works" style="height: 102vh;"><div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Sites</div>
+        <div class="works_inside">
+        <img class="site_slides" src="images/dummy.png">
+        <img class="site_slides" src="images/dummy.png">
+        </div></div>
     </div>
 
 </body>
