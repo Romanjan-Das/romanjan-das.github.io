@@ -479,7 +479,7 @@
         <div id="my_apps" class="works">
             <div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Apps</div>
             <div class="sld_container">
-            <div class="slide_cntrl" onmouseover="forSlidePointers" onmouseout="forSlidePointers2"><img src="images/slide_left_img.svg" alt="" onclick="prevSlide();"></div>
+            <div class="slide_cntrl" onmouseover="clearsTheInterval();" onmouseout="startsTheInterval();"><img src="images/slide_left_img.svg" alt="" onclick="prevSlide();"></div>
             <div class="works_inside">
                 <!----------------------------------------------Slideshow------------------------------------------------------------------------->
                 <!---Put the slideshow inside a div with predefined dimensions,slideshows dimensions depend on the parent width only-------------->
@@ -507,7 +507,7 @@
                 </div>
                 <!---------------------------------------------------------------------------------------------------->
             </div>
-            <div class="slide_cntrl" onmouseover="forSlidePointers" onmouseout="forSlidePointers2"><img src="images/slide_right_img.svg" alt="" onclick="nextSlide();"></div></div>
+            <div class="slide_cntrl" onmouseover="clearsTheInterval();" onmouseout="startsTheInterval();"><img src="images/slide_right_img.svg" alt="" onclick="nextSlide();"></div></div>
             
         </div>
         <div id="my_sites" class="works" style="height: 102vh;">
