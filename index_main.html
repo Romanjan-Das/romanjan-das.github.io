@@ -13,16 +13,45 @@
     <title>Hi,I'm Romanjan</title>
 
     <style>
+        /** For slideshow loading screen only **/
+        .css_loader {
+            border: 1vmin solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 1vmin solid #3498db;
+            width: 5vmin;
+            height: 5vmin;
+            margin: auto;
+            padding: 0px;
+            animation: spin 700ms linear infinite;
+        }
+
+        .css_helper {
+            width: 50%;
+            height: 40%;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
             background-color: black;
         }
+
         body {
             background-color: black;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
         }
+
         .loader {
             position: absolute;
             top: 40vh;
@@ -36,14 +65,17 @@
             border-top-color: rgb(0, 179, 211);
             animation: loader_animation 500ms linear infinite;
         }
+
         @keyframes loader_animation {
             to {
                 transform: rotate(0deg);
             }
+
             from {
                 transform: rotate(-360deg);
             }
         }
+
         @media only screen and (orientation: landscape) {
             .loader {
                 width: 12vh;
@@ -60,6 +92,7 @@
             width: 100vw;
             display: none;
         }
+
         .myGreetings {
             position: absolute;
             top: 35vw;
@@ -81,15 +114,275 @@
             }
         }
 
-        .nav_bar{display:flex;align-items: center;position: fixed;top:0px;left:0px;height:50px;width:100%;background-color:black;margin:0px;color:white;}
-        .nav_items{margin-left:50px;cursor: pointer;} .nav_items:hover{text-shadow: 0px 0px gainsboro;}
-        .works{width: 100%; height: 100vh;background-color: rgba(0, 0, 0, 0.526);box-sizing: border-box;padding:5%;padding-top: 5%;}
-        .works_inside{width: 97%;height:80%;background-color:white;display: flex;justify-content: center;} .works_inside>img{height: 0px;opacity: 0;transition: 600ms;}
+        .nav_bar {
+            display: flex;
+            align-items: center;
+            position: fixed;
+            z-index: 100;
+            top: 0px;
+            left: 0px;
+            height: 50px;
+            width: 100%;
+            background-color: black;
+            margin: 0px;
+            color: white;
+        }
+
+        .nav_items {
+            margin-left: 50px;
+            cursor: pointer;
+        }
+
+        .nav_items:hover {
+            text-shadow: 0px 0px gainsboro;
+        }
+
+        .works {
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.526);
+            box-sizing: border-box;
+            padding: 5%;
+            padding-top: 5%;
+        }
+
+        .works_inside {
+            width: 70%;
+            height: 80%;
+            background-color: white;
+        }
+
+        .slide_controls {
+            display: none;
+        }
+        .sld_container{
+            width: 100%;
+            display: flex;
+        }
+        .slide_cntrl{
+            width: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+        .slide_cntrl>img{
+            width: 30%; height: 30%; opacity: 0.2;
+        }
+        .slide_cntrl>img:hover{
+            width: 40%; height: 40%; transition: 100ms; cursor: pointer;
+        }
     </style>
+    <script>
+        var checkDimIntv;
+        var slideWidth;
+        var imageSlideshow;
+        var slidesContainer;
+        var numberOfSlides;
+        var slideControls;
+        var slideshowTimer;
+        var slideNumber = 0;
+        var slidePointers = [];
+        var bodyClientWidth;
+        var touchStartX = 0;
+        var touchmoveX = 0;
+        var touchStatusBool = true;
+        var imgHoverStatus = [];
+        var forSlidePointers = "";
+        var forSlidePointers2 = "";
+
+        function checkDimensionChange() {
+            if (bodyClientWidth != document.body.clientWidth) {
+                bodyClientWidth = document.body.clientWidth;
+                resetTheDimensions();
+            }
+        }
+        function slideshowInitialise() {
+            imageSlideshow = document.getElementsByClassName("image_slideshow")[0];
+            imageSlideshow.style.padding = "0px";
+            bodyClientWidth = document.body.clientWidth;
+            checkDimIntv = setInterval(() => {
+                checkDimensionChange();
+            }, 500);
+            imageSlideshow.style.overflow = "hidden";
+            slidesContainer = document.getElementsByClassName("slide_container")[0];
+            numberOfSlides = document.getElementsByClassName("slides").length;
+            for (i = 0; i < numberOfSlides; i++) {
+                document.getElementsByClassName("slides")[i].style.margin = "0px";
+                document.getElementsByClassName("slides")[i].style.float = "left";
+            }
+            slideControls = document.getElementsByClassName("slide_controls")[0];
+            slideControls.style.padding = "0px";
+            slideControls.style.backgroundColor = "white";
+            slidesContainer.style.transition = "700ms";
+            document.getElementsByClassName("slide_control_icon")[0].style.float = "left";
+            document.getElementsByClassName("slide_control_icon")[1].style.float = "left";
+            document.getElementsByClassName("slide_control_pointer_bar")[0].style.float = "left";
+            document.getElementsByClassName("slide_control_icon_img")[0].style.float = "left";
+            document.getElementsByClassName("slide_control_icon_img")[1].style.float = "left";
+
+            for (i = 0; i < numberOfSlides; i++) {
+                slidePointers[i] = document.createElement("div");
+                slidePointers[i].className = "slide_pointers";
+                document.getElementsByClassName("slide_control_pointer_container")[0].appendChild(slidePointers[i]);
+            }
+
+            for (i = 0; i < numberOfSlides; i++) {
+                document.getElementsByClassName("slide_pointers")[i].style.border = "1px solid gainsboro";
+                document.getElementsByClassName("slide_pointers")[i].style.borderRadius = "50%";
+                document.getElementsByClassName("slide_pointers")[i].style.float = "left";
+                document.getElementsByClassName("slide_pointers")[i].id = "slide_pointer_" + i;
+                document.getElementsByClassName("slide_pointers")[i].setAttribute("onclick", "gotoSlide(this);");
+                forSlidePointers = "document.getElementsByClassName(\"slide_pointers\")[" + i + "].style.borderColor= \"slategrey\";"
+                forSlidePointers2 = "document.getElementsByClassName(\"slide_pointers\")[" + i + "].style.borderColor= \"gainsboro\";"
+                document.getElementsByClassName("slide_pointers")[i].setAttribute("onmouseover", forSlidePointers);
+                document.getElementsByClassName("slide_pointers")[i].setAttribute("onmouseout", forSlidePointers2);
+            }
+
+
+            document.getElementsByClassName("slide_control_pointer_container")[0].style.margin = "auto";
+            document.getElementsByClassName("slide_control_pointer_container")[0].style.boxSizing = "border-box";
+
+            for (i = 0; i < numberOfSlides; i++) {
+                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+            }
+            document.getElementsByClassName("slide_pointers")[0].style.backgroundColor = "gainsboro";
+            resetTheDimensions();
+            startsTheInterval();
+            if (window.innerHeight < window.innerWidth) {
+                imageSlideshow.addEventListener("mouseover", clearsTheInterval, false);
+                imageSlideshow.addEventListener("mouseout", startsTheInterval, false);
+            }
+
+            slidesContainer.setAttribute("ontouchstart", "ontouchstartEvent(event);");
+            slidesContainer.setAttribute("ontouchmove", "ontouchmoveEvent(event);");
+            slidesContainer.setAttribute("ontouchend", "touchStatusBool=true;startsTheInterval();");
+            document.getElementsByClassName("slide_control_icon")[0].addEventListener("click", prevSlide, false);
+            document.getElementsByClassName("slide_control_icon")[1].addEventListener("click", nextSlide, false);
+            document.getElementsByClassName("slide_control_icon_img")[0].style.opacity = "0.25";
+            document.getElementsByClassName("slide_control_icon_img")[1].style.opacity = "0.25";
+            imgHoverStatus[0] = document.getElementsByClassName("slide_control_icon")[0];
+            imgHoverStatus[0].addEventListener("mouseover", function () { document.getElementsByClassName("slide_control_icon_img")[0].style.opacity = "1"; }, false);
+            imgHoverStatus[0].addEventListener("mouseout", function () { document.getElementsByClassName("slide_control_icon_img")[0].style.opacity = "0.25"; }, false);
+            imgHoverStatus[1] = document.getElementsByClassName("slide_control_icon")[1];
+            imgHoverStatus[1].addEventListener("mouseover", function () { document.getElementsByClassName("slide_control_icon_img")[1].style.opacity = "1"; }, false);
+            imgHoverStatus[1].addEventListener("mouseout", function () { document.getElementsByClassName("slide_control_icon_img")[1].style.opacity = "0.25"; }, false);
+            document.getElementsByClassName("css_helper")[0].style.display = "none";
+            document.getElementsByClassName("css_loader")[0].style.display = "none";
+            document.getElementsByClassName("image_slideshow")[0].style.display = "block";
+        }
+        function ontouchstartEvent(event) {
+            clearsTheInterval();
+            touchStartX = event.touches[0].clientX;
+        }
+        function ontouchmoveEvent(event) {
+            if (touchStartX - event.touches[0].clientX > slideWidth / 5 && touchStatusBool) {
+                if (slideNumber != numberOfSlides - 1) {
+                    nextSlide();
+                }
+                touchStatusBool = false;
+            }
+            if (event.touches[0].clientX - touchStartX > slideWidth / 5 && touchStatusBool) {
+                if (slideNumber != 0) {
+                    prevSlide();
+                }
+                touchStatusBool = false;
+            }
+        }
+        function clearsTheInterval() {
+            clearInterval(slideshowTimer);
+        }
+        function startsTheInterval() {
+            slideshowTimer = setInterval(() => {
+                slideNumber++;
+                if (slideNumber > numberOfSlides - 1) {
+                    slideNumber = 0;
+                }
+                slidesContainer.style.transform = "translateX(-" + slideWidth * slideNumber + "px)";
+                for (i = 0; i < numberOfSlides; i++) {
+                    document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+                }
+                document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
+            }, 3000);
+        }
+        function nextSlide() {
+            slideNumber++;
+            if (slideNumber > numberOfSlides - 1) {
+                slideNumber = 0;
+            }
+            slidesContainer.style.transform = "translateX(-" + slideWidth * slideNumber + "px)";
+            for (i = 0; i < numberOfSlides; i++) {
+                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+            }
+            document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
+        }
+        function prevSlide() {
+            slideNumber = slideNumber - 1;
+            if (slideNumber < 0) {
+                slideNumber = numberOfSlides - 1;
+            }
+            slidesContainer.style.transform = "translateX(-" + slideWidth * slideNumber + "px)";
+            for (i = 0; i < numberOfSlides; i++) {
+                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+            }
+            document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
+        }
+        function gotoSlide(x) {
+            var str = x.id;
+            str = str.slice(14, str.length);
+            slideNumber = parseInt(str);
+            slidesContainer.style.transform = "translateX(-" + slideWidth * slideNumber + "px)";
+            for (i = 0; i < numberOfSlides; i++) {
+                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+            }
+            document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
+        }
+        function resetTheDimensions() {
+            slideWidth = document.getElementsByClassName("image_slideshow")[0].parentElement.clientWidth;
+            imageSlideshow.style.width = slideWidth + "px";
+            imageSlideshow.style.height = slideWidth * 5.6 / 10 + "px";
+            slidesContainer.style.height = slideWidth * 5.6 / 10 + "px";
+            slidesContainer.style.width = (numberOfSlides * slideWidth + 1) + "px";
+            for (i = 0; i < numberOfSlides; i++) {
+                document.getElementsByClassName("slides")[i].style.width = slideWidth + "px";
+                document.getElementsByClassName("slides")[i].style.height = slideWidth * 5.6 / 10 + "px";
+            }
+            slideControls.style.height = slideWidth / 10 + "px";
+            slideControls.style.width = slideWidth + "px";
+            document.getElementsByClassName("slide_control_icon")[0].style.width = slideWidth / 10 + "px";
+            document.getElementsByClassName("slide_control_icon")[0].style.height = slideWidth / 10 + "px";
+
+            document.getElementsByClassName("slide_control_icon")[1].style.width = slideWidth / 10 + "px";
+            document.getElementsByClassName("slide_control_icon")[1].style.height = slideWidth / 10 + "px";
+
+            document.getElementsByClassName("slide_control_pointer_bar")[0].style.width = (slideWidth - slideWidth / 5) + "px";
+            document.getElementsByClassName("slide_control_pointer_bar")[0].style.height = slideWidth / 10 + "px";
+
+            document.getElementsByClassName("slide_control_icon_img")[0].style.width = slideWidth / 20 + "px";
+            document.getElementsByClassName("slide_control_icon_img")[0].style.height = slideWidth / 20 + "px";
+            document.getElementsByClassName("slide_control_icon_img")[0].style.margin = slideWidth / 40 + "px";
+            document.getElementsByClassName("slide_control_icon_img")[1].style.width = slideWidth / 20 + "px";
+            document.getElementsByClassName("slide_control_icon_img")[1].style.height = slideWidth / 20 + "px";
+            document.getElementsByClassName("slide_control_icon_img")[1].style.margin = slideWidth / 40 + "px";
+
+            for (i = 0; i < numberOfSlides; i++) {
+                document.getElementsByClassName("slide_pointers")[i].style.width = slideWidth / 25 + "px";
+                document.getElementsByClassName("slide_pointers")[i].style.height = slideWidth / 25 + "px";
+                document.getElementsByClassName("slide_pointers")[i].style.marginLeft = slideWidth / 50 + "px";
+            }
+
+            //document.getElementsByClassName("slide_control_pointer_container")[0].style.width = (slideWidth/16 + slideWidth/50)*numberOfSlides+"px";
+            document.getElementsByClassName("slide_control_pointer_container")[0].style.marginLeft = (((slideWidth - slideWidth / 5) - (slideWidth / 25 + slideWidth / 50) * numberOfSlides) / 2 - slideWidth / 50) + "px";
+            document.getElementsByClassName("slide_control_pointer_container")[0].style.height = slideWidth / 10 + "px";
+            document.getElementsByClassName("slide_control_pointer_container")[0].style.paddingTop = (slideWidth / 11 - slideWidth / 25) / 2 + "px";
+
+            slidesContainer.style.transform = "translateX(-" + slideWidth * slideNumber + "px)";
+        }
+    </script>
 
 </head>
 
-<body onload="start_my_app_slides();">
+<body onload="slideshowInitialise();">
     <div class="loader"></div>
     <script>
         {
@@ -138,104 +431,90 @@
         }
 
         function manipulateInnerHTML() {
-            var string_array=["Hi, I'm Romanjan","I am an android and web developer","Kindly mail me if you need something built"];
-            var string=""; var string_length=string.length; var speed=70;
-            var text_div=document.getElementsByClassName("myGreetings")[0];
-            var i=0; var j=0; var temp_string=""; var state=true; var state_b=true; var k=0; var pause_duration=30;
-            var interval=setInterval(() => {
-                if(state_b){ if(j==string_array.length){j=0;}string=string_array[j]; 
-                string_length=string.length; state_b=false; j++;}
-                if(state){
-                    if(i==string_length-1){
-                        state=false; k=0;
+            var string_array = ["Hi, I'm Romanjan", "I am an android and web developer", "Kindly mail me if you need something built"];
+            var string = ""; var string_length = string.length; var speed = 70;
+            var text_div = document.getElementsByClassName("myGreetings")[0];
+            var i = 0; var j = 0; var temp_string = ""; var state = true; var state_b = true; var k = 0; var pause_duration = 30;
+            var interval = setInterval(() => {
+                if (state_b) {
+                    if (j == string_array.length) { j = 0; } string = string_array[j];
+                    string_length = string.length; state_b = false; j++;
+                }
+                if (state) {
+                    if (i == string_length - 1) {
+                        state = false; k = 0;
                     }
-                    temp_string=temp_string+string.charAt(i);
-                    text_div.innerHTML=temp_string+"|";
+                    temp_string = temp_string + string.charAt(i);
+                    text_div.innerHTML = temp_string + "|";
                     i++;
                 }
-                else{
-                    if(k>pause_duration){
-                        temp_string=temp_string.substr(0,i);
-                        text_div.innerHTML=temp_string+"|";
-                        i=i-1;
-                        if(i==-1){
-                            state=true; state_b=true;
-                        i=0;
+                else {
+                    if (k > pause_duration) {
+                        temp_string = temp_string.substr(0, i);
+                        text_div.innerHTML = temp_string + "|";
+                        i = i - 1;
+                        if (i == -1) {
+                            state = true; state_b = true;
+                            i = 0;
                         }
                     }
                     k++;
                 }
-            }, speed);        
+            }, speed);
         }
-    </script>
-    <script>
-        function start_my_app_slides(){
-            var my_app_img=document.getElementsByClassName("app_slides"); var m=1;
-            var my_site_img=document.getElementsByClassName("site_slides");
-            if(window.innerHeight<window.innerWidth){
-                for(m=1;m<5;m++){
-                    my_app_img[m-1].src="images/L"+m+".png";
-                }
-                my_site_img[0].src="images/SL1.png";
-                my_site_img[1].src="images/SL2.png";
-            }
-            else{
-                for(m=1;m<5;m++){
-                    my_app_img[m-1].src="images/P"+m+".png";
-                }
-                my_site_img[0].src="images/SP1.png";
-                my_site_img[1].src="images/SP2.png";
-            }
-            var i=0;var j=1;var my_app_slides=document.getElementsByClassName("works_inside")[0].childNodes;
-            var my_site_slides=document.getElementsByClassName("works_inside")[1].childNodes; var k=0; var l=1;
-            var mas=setInterval(() => {
-                if(i==my_app_slides.length||i>my_app_slides.length){
-                    i=0;
-                }
-                if(i%2!=0){
-                    my_app_slides[j].style.height="0px";
-                    my_app_slides[j].style.opacity="0";
-                    my_app_slides[i].style.height="100%";
-                    my_app_slides[i].style.opacity="1";
-                    j=i;
-                }i++;
-
-                if(k==my_site_slides.length||k>my_site_slides.length){
-                    k=0;
-                }
-                if(k%2!=0){
-                    my_site_slides[l].style.height="0px";
-                    my_site_slides[l].style.opacity="0";
-                    my_site_slides[k].style.height="100%";
-                    my_site_slides[k].style.opacity="1";
-                    l=k;
-                }k++;
-            }, 1500);
-        } 
     </script>
 
     <div class="nav_bar">
         <div class="nav_items" onclick="location.href='#home'">Home</div>
         <div class="nav_items" onclick="location.href='#my_apps'">My Apps</div>
-        <div class="nav_items" onclick="location.href='https://play.google.com/store/apps/dev?id=5128058888955831755';">View in Playstore</div>
+        <div class="nav_items" onclick="location.href='https://play.google.com/store/apps/dev?id=5128058888955831755';">
+            View in Playstore</div>
         <div class="nav_items" onclick="location.href='#my_sites'">My Sites</div>
-        <div class="nav_items" onclick="location.href='https://github.com/Romanjan-Das?tab=repositories';">Github Repo</div>
+        <div class="nav_items" onclick="location.href='https://github.com/Romanjan-Das?tab=repositories';">Github Repo
+        </div>
         <div class="nav_items" onclick="location.href='mailto:romanjandas.mail@gmail.com'">Mail Me</div>
     </div>
     <div style="width: 100vw; height:300vh; background-color:rgba(0, 0, 0, 0.526);box-sizing: border-box;">
         <div id="home" class="works"></div>
-        <div id="my_apps" class="works"><div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Apps</div>
-        <div class="works_inside">
-        <img class="app_slides" src="images/dummy.png">
-        <img class="app_slides" src="images/dummy.png">
-        <img class="app_slides" src="images/dummy.png">
-        <img class="app_slides" src="images/dummy.png">
-        </div></div>
-        <div id="my_sites" class="works" style="height: 102vh;"><div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Sites</div>
-        <div class="works_inside">
-        <img class="site_slides" src="images/dummy.png">
-        <img class="site_slides" src="images/dummy.png">
-        </div></div>
+        <div id="my_apps" class="works">
+            <div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Apps</div>
+            <div class="sld_container">
+            <div class="slide_cntrl" onmouseover="forSlidePointers" onmouseout="forSlidePointers2"><img src="images/slide_left_img.svg" alt="" onclick="prevSlide();"></div>
+            <div class="works_inside">
+                <!----------------------------------------------Slideshow------------------------------------------------------------------------->
+                <!---Put the slideshow inside a div with predefined dimensions,slideshows dimensions depend on the parent width only-------------->
+                <!---Only one slideshow can be added,and add the slideshowinitialise function to body onload-------------------------------------->
+                <!---Copy the script to the head and place the icon images to the images folder--------------------------------------------------->
+                <div class="css_helper"></div>
+                <div class="css_loader"></div>
+                <div class="image_slideshow" style="display:none;">
+                    <div class="slide_container">
+                        <img class="slides" src="images/slide(1).jpg" alt="">
+                        <img class="slides" src="images/slide(2).jpg" alt="">
+                        <img class="slides" src="images/slide(3).jpg" alt="">
+                        <img class="slides" src="images/slide(4).jpg" alt="">
+                    </div>
+                    <div class="slide_controls">
+                        <div class="slide_control_icon"><img class="slide_control_icon_img"
+                                src="images/slide_left_img.svg" alt=""></div>
+                        <div class="slide_control_pointer_bar">
+                            <div class="slide_control_pointer_container">
+                            </div>
+                        </div>
+                        <div class="slide_control_icon"><img class="slide_control_icon_img"
+                                src="images/slide_right_img.svg" alt=""></div>
+                    </div>
+                </div>
+                <!---------------------------------------------------------------------------------------------------->
+            </div>
+            <div class="slide_cntrl" onmouseover="forSlidePointers" onmouseout="forSlidePointers2"><img src="images/slide_right_img.svg" alt="" onclick="nextSlide();"></div></div>
+            
+        </div>
+        <div id="my_sites" class="works" style="height: 102vh;">
+            <div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Sites</div>
+            <div class="works_inside">
+            </div>
+        </div>
     </div>
 
 </body>
