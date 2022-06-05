@@ -83,12 +83,12 @@
         .nav_bar{display:flex;align-items: center;position: fixed;top:0px;left:0px;height:50px;width:100%;background-color:rgba(0, 0, 0, 0.526);margin:0px;color:white;}
         .nav_items{margin-left:50px;cursor: pointer;} .nav_items:hover{text-shadow: 0px 0px gainsboro;}
         .works{width: 100%; height: 100vh;background-color: rgba(0, 0, 0, 0.526);box-sizing: border-box;padding:5%;padding-top: 5%;}
-        .works_inside{width: 97%;height:80%;background-color:aliceblue;display: flex;overflow:scroll;} .works_inside>img{height: 100%;margin-right: 1%;}
+        .works_inside{width: 97%;height:80%;background-color:white;display: flex;justify-content: center;} .works_inside>img{height: 0px;opacity: 0;transition: 600ms;}
     </style>
 
 </head>
 
-<body>
+<body onload="start_my_app_slides();">
     <div class="loader"></div>
     <script>
         {
@@ -137,7 +137,7 @@
         }
 
         function manipulateInnerHTML() {
-            var string_array=["Hi, I'm Romanjan","I am an android and web developer","Please mail me if you need something built"];
+            var string_array=["Hi, I'm Romanjan","I am an android and web developer","Kindly mail me if you need something built"];
             var string=""; var string_length=string.length; var speed=70;
             var text_div=document.getElementsByClassName("myGreetings")[0];
             var i=0; var j=0; var temp_string=""; var state=true; var state_b=true; var k=0; var pause_duration=30;
@@ -166,6 +166,11 @@
                 }
             }, speed);        
         }
+    </script>
+    <script>
+        function start_my_app_slides(){console.log("hello");var i=0;var j=1;var my_app_slides=document.getElementsByClassName("works_inside")[0].childNodes;
+        var mas=setInterval(() => {if(i==my_app_slides.length||i>my_app_slides.length){i=0;};if(i%2!=0){my_app_slides[j].style.height="0px";
+        my_app_slides[j].style.opacity="0";my_app_slides[i].style.height="100%";my_app_slides[i].style.opacity="1";j=i;}i++;}, 1500);} 
     </script>
 
     <div class="nav_bar">
