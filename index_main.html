@@ -175,6 +175,28 @@
         .xslide{
             transition: 200ms;
         }
+        .main_container{
+            width: 100vw; height:305vh; background-color:rgba(0, 0, 0, 0.526);box-sizing: border-box;
+        }
+        .portrait_nav_bar{
+            display: none;
+        }
+        #in_modal_b{position:relative;width:50.5%;margin-bottom:10px;display: flex;justify-content: flex-end;}
+        #in_modal{width: 50%;height:40%;background-color: black;color:white;border: 2px grey  solid;display: flex;flex-direction: column;align-items: center;justify-content: center;}
+        @media only screen and (orientation: portrait) {
+            .works{
+                display: none;
+            }
+            .nav_bar{
+                display: none;
+            }
+            .main_container{height: 0px; width: 0px;}
+            .portrait_nav_bar{display: flex;position:fixed;bottom:0px;width: 100%;background-color: black;left:0px;align-items: center;justify-content: space-evenly;
+            padding:10px;box-sizing:border-box;}
+            .portrait_nav_bar>div{color:white;padding:3px;padding-left:10px;padding-right:10px;}
+            #in_modal{width: 90%;}
+            #in_modal_b{width: 90%;}
+        }
     </style>
     <script>
         var checkDimIntv;
@@ -466,15 +488,19 @@
             }, speed);
         }
     </script>
-
+    <div class="portrait_nav_bar">
+        <div onclick="location.href='https://play.google.com/store/apps/dev?id=5128058888955831755';">My Apps</div>
+        <div onclick="location.href='https://github.com/Romanjan-Das?tab=repositories';">Github</div><div onclick="show_modal();">Contact</div>
+    </div>
     <div class="nav_bar">
         <div class="nav_items" onclick="location.href='#home'">Home</div>
         <div class="nav_items" onclick="location.href='#my_apps'">My Apps</div>
         <div class="nav_items" onclick="location.href='https://play.google.com/store/apps/dev?id=5128058888955831755';">Playstore</div>
         <div class="nav_items" onclick="location.href='#my_sites'">My Sites</div>
+        <div class="nav_items" onclick="location.href='https://github.com/Romanjan-Das?tab=repositories';">Github</div>
         <div class="nav_items" onclick="show_modal();">Contact</div>
     </div>
-    <div style="width: 100vw; height:305vh; background-color:rgba(0, 0, 0, 0.526);box-sizing: border-box;">
+    <div class="main_container">
         <div id="home" class="works"></div>
         <div id="my_apps" class="works">
             <div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Apps</div>
@@ -552,8 +578,8 @@
         </script>
     </div>
 <div id="modal" style="font-size: larger;position: fixed;width: 100%;height: 100%;background-color: black;top: 0px;left: 0px;z-index: 101;opacity: 0.9;display: none;flex-direction: column;align-items: center;justify-content: center;">
-    <div style="position:relative;width:50.5%;margin-bottom:10px;display: flex;justify-content: flex-end;"><div onclick="hide_modal();" style="cursor: pointer;">&#10060;</div></div>
-    <div style="width: 50%;height:40%;background-color: black;color:white;border: 2px grey  solid;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+    <div id="in_modal_b"><div onclick="hide_modal();" style="cursor: pointer;">&#10060;</div></div>
+    <div id="in_modal">
         <div style="text-align: center;">My e-mail:<br>romanjandas.mail@gmail.com</div>
         <div style="background-color: black;text-align: center;cursor: pointer;padding: 3px;padding-left:5px;padding-right:5px;margin-top:60px;border: 2px grey solid;width: 200px;"
         onclick="location.href='mailto:romanjandas.mail@gmail.com'">Send a mail</div>
