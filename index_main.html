@@ -172,6 +172,9 @@
         .slide_cntrl>img:hover{
             width: 40%; height: 40%; transition: 100ms; cursor: pointer;
         }
+        .xslide{
+            transition: 200ms;
+        }
     </style>
     <script>
         var checkDimIntv;
@@ -382,7 +385,7 @@
 
 </head>
 
-<body onload="slideshowInitialise();">
+<body onload="slideshowInitialise();xslide_intvl();">
     <div class="loader"></div>
     <script>
         {
@@ -468,10 +471,10 @@
         <div class="nav_items" onclick="location.href='#home'">Home</div>
         <div class="nav_items" onclick="location.href='#my_apps'">My Apps</div>
         <div class="nav_items" onclick="location.href='https://play.google.com/store/apps/dev?id=5128058888955831755';">Playstore</div>
-        <div class="nav_items" onclick="location.href='https://github.com/Romanjan-Das?tab=repositories';">Github</div>
-        <div class="nav_items" onclick="location.href='mailto:romanjandas.mail@gmail.com'">Contact</div>
+        <div class="nav_items" onclick="location.href='#my_sites'">My Sites</div>
+        <div class="nav_items" onclick="show_modal();">Contact</div>
     </div>
-    <div style="width: 100vw; height:205vh; background-color:rgba(0, 0, 0, 0.526);box-sizing: border-box;">
+    <div style="width: 100vw; height:305vh; background-color:rgba(0, 0, 0, 0.526);box-sizing: border-box;">
         <div id="home" class="works"></div>
         <div id="my_apps" class="works">
             <div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Apps</div>
@@ -507,8 +510,63 @@
             <div class="slide_cntrl" onmouseover="clearsTheInterval();" onmouseout="startsTheInterval();"><img src="images/slide_right_img.svg" alt="" onclick="nextSlide();"></div></div>
             
         </div>
-    </div>
 
+
+        <div id="my_sites" class="works">
+            <div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Sites</div>
+            <div class="sld_container" style="height: 80%;">
+            <div class="slide_cntrl"><img src="images/slide_left_img.svg" alt="" onclick="prv_xslide();"></div>
+            <div class="works_inside" style="height: 100%;display: flex;align-items: center;">
+                <img class="xslide" style="height: 100%;width: 0px; opacity: 0;" src="images/xslide(1).jpg" alt="">
+                <img class="xslide" style="height: 100%;width: 0px; opacity: 0;" src="images/xslide(2).jpg" alt="">
+            </div>
+            <div class="slide_cntrl"><img src="images/slide_right_img.svg" alt="" onclick="nxt_xslide();"></div></div>
+        </div>
+        <script>
+            function xslide_intvl(){
+                var y=true;
+                var z=setInterval(() => {
+                    if(y){
+                        prv_xslide();
+                        y=false;
+                    }
+                    else{
+                        nxt_xslide();
+                        y=true;
+                    }
+                }, 3500);
+            }
+
+            function prv_xslide(){
+                document.getElementsByClassName("xslide")[0].style.width="100%";
+                document.getElementsByClassName("xslide")[0].style.opacity="1";
+                document.getElementsByClassName("xslide")[1].style.width="0px";
+                document.getElementsByClassName("xslide")[1].style.opacity="0";
+            }
+            function nxt_xslide(){
+                document.getElementsByClassName("xslide")[1].style.width="100%";
+                document.getElementsByClassName("xslide")[1].style.opacity="1";
+                document.getElementsByClassName("xslide")[0].style.width="0px";
+                document.getElementsByClassName("xslide")[0].style.opacity="0";
+            }
+        </script>
+    </div>
+<div id="modal" style="font-size: larger;position: fixed;width: 100%;height: 100%;background-color: black;top: 0px;left: 0px;z-index: 101;opacity: 0.9;display: none;flex-direction: column;align-items: center;justify-content: center;">
+    <div style="position:relative;width:50.5%;margin-bottom:10px;display: flex;justify-content: flex-end;"><div onclick="hide_modal();" style="cursor: pointer;">&#10060;</div></div>
+    <div style="width: 50%;height:40%;background-color: black;color:white;border: 2px grey  solid;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+        <div style="text-align: center;">My e-mail:<br>romanjandas.mail@gmail.com</div>
+        <div style="background-color: black;text-align: center;cursor: pointer;padding: 3px;padding-left:5px;padding-right:5px;margin-top:60px;border: 2px grey solid;width: 200px;"
+        onclick="location.href='mailto:romanjandas.mail@gmail.com'">Send a mail</div>
+    </div>
+</div>
+<script>
+    function hide_modal(){
+        document.getElementById("modal").style.display="none";
+    }
+    function show_modal(){
+        document.getElementById("modal").style.display="flex";
+    }
+</script>
 </body>
 
 </html>
