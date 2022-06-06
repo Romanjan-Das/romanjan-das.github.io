@@ -407,7 +407,7 @@
 
 </head>
 
-<body onload="slideshowInitialise();xslide_intvl();">
+<body onload="set_img_source();slideshowInitialise();xslide_intvl();">
     <div class="loader"></div>
     <script>
         {
@@ -515,10 +515,10 @@
                 <div class="css_loader"></div>
                 <div class="image_slideshow" style="display:none;">
                     <div class="slide_container">
-                        <img class="slides" src="images/slide(1).jpg" alt="">
-                        <img class="slides" src="images/slide(2).jpg" alt="">
-                        <img class="slides" src="images/slide(3).jpg" alt="">
-                        <img class="slides" src="images/slide(4).jpg" alt="">
+                        <img class="slides" src="images/dummy.jpg" alt="">
+                        <img class="slides" src="images/dummy.jpg" alt="">
+                        <img class="slides" src="images/dummy.jpg" alt="">
+                        <img class="slides" src="images/dummy.jpg" alt="">
                     </div>
                     <div class="slide_controls">
                         <div class="slide_control_icon"><img class="slide_control_icon_img"
@@ -543,8 +543,8 @@
             <div class="sld_container" style="height: 80%;">
             <div class="slide_cntrl"><img src="images/slide_left_img.svg" alt="" onclick="prv_xslide();"></div>
             <div class="works_inside" style="height: 100%;display: flex;align-items: center;">
-                <img class="xslide" style="height: 100%;width: 0px; opacity: 0;" src="images/xslide(1).jpg" alt="">
-                <img class="xslide" style="height: 100%;width: 0px; opacity: 0;" src="images/xslide(2).jpg" alt="">
+                <img class="xslide" style="height: 100%;width: 0px; opacity: 0;" src="images/dummy.jpg" alt="">
+                <img class="xslide" style="height: 100%;width: 0px; opacity: 0;" src="images/dummy.jpg" alt="">
             </div>
             <div class="slide_cntrl"><img src="images/slide_right_img.svg" alt="" onclick="nxt_xslide();"></div></div>
         </div>
@@ -591,6 +591,18 @@
     }
     function show_modal(){
         document.getElementById("modal").style.display="flex";
+    }
+</script>
+<script>
+    function set_img_source(){
+        if(window.innerWidth>window.innerHeight){
+            var sld=document.getElementsByClassName("slides"); var i=0;
+            for(i=0;i<sld.length;i++){
+                sld[i].src="images/slide("+(i+1)+").jpg";
+            }
+            var xsld=document.getElementsByClassName("xslide");
+            xsld[0].src="images/xslide(1).jpg"; xsld[1].src="images/xslide(2).jpg";
+        }
     }
 </script>
 </body>
