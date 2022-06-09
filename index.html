@@ -145,17 +145,26 @@
             padding: 5%;
             padding-top: 5%;
         }
-
+        .slide_controls{
+            position: absolute; bottom:0px;left:0px;z-index:100;margin-left:20%;background-color: transparent;
+        }
+        .slide_control_icon{
+            display: none;
+        }
+        .slide_control_pointer_bar{
+            background-color: transparent;
+        }
+        .slide_control_pointer_container{
+            background-color: transparent;
+        }
         .works_inside {
             width: 70%;
             height: 80%;
             background-color: white;
         }
 
-        .slide_controls {
-            display: none;
-        }
         .sld_container{
+            position: relative;
             width: 100%;
             display: flex;
         }
@@ -238,7 +247,7 @@
             }
             slideControls = document.getElementsByClassName("slide_controls")[0];
             slideControls.style.padding = "0px";
-            slideControls.style.backgroundColor = "white";
+            slideControls.style.backgroundColor = "transparent";
             slidesContainer.style.transition = "700ms";
             document.getElementsByClassName("slide_control_icon")[0].style.float = "left";
             document.getElementsByClassName("slide_control_icon")[1].style.float = "left";
@@ -254,7 +263,6 @@
 
             for (i = 0; i < numberOfSlides; i++) {
                 document.getElementsByClassName("slide_pointers")[i].style.border = "1px solid gainsboro";
-                document.getElementsByClassName("slide_pointers")[i].style.borderRadius = "50%";
                 document.getElementsByClassName("slide_pointers")[i].style.float = "left";
                 document.getElementsByClassName("slide_pointers")[i].id = "slide_pointer_" + i;
                 document.getElementsByClassName("slide_pointers")[i].setAttribute("onclick", "gotoSlide(this);");
@@ -269,9 +277,9 @@
             document.getElementsByClassName("slide_control_pointer_container")[0].style.boxSizing = "border-box";
 
             for (i = 0; i < numberOfSlides; i++) {
-                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "gainsboro";
             }
-            document.getElementsByClassName("slide_pointers")[0].style.backgroundColor = "gainsboro";
+            document.getElementsByClassName("slide_pointers")[0].style.backgroundColor = "grey";
             resetTheDimensions();
             startsTheInterval();
             if (window.innerHeight < window.innerWidth) {
@@ -325,9 +333,9 @@
                 }
                 slidesContainer.style.transform = "translateX(-" + slideWidth * slideNumber + "px)";
                 for (i = 0; i < numberOfSlides; i++) {
-                    document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+                    document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "gainsboro";
                 }
-                document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
+                document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "grey";
             }, 3000);
         }
         function nextSlide() {
@@ -337,9 +345,9 @@
             }
             slidesContainer.style.transform = "translateX(-" + slideWidth * slideNumber + "px)";
             for (i = 0; i < numberOfSlides; i++) {
-                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "gainsboro";
             }
-            document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
+            document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "grey";
         }
         function prevSlide() {
             slideNumber = slideNumber - 1;
@@ -348,9 +356,9 @@
             }
             slidesContainer.style.transform = "translateX(-" + slideWidth * slideNumber + "px)";
             for (i = 0; i < numberOfSlides; i++) {
-                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "gainsboro";
             }
-            document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
+            document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "grey";
         }
         function gotoSlide(x) {
             var str = x.id;
@@ -358,9 +366,9 @@
             slideNumber = parseInt(str);
             slidesContainer.style.transform = "translateX(-" + slideWidth * slideNumber + "px)";
             for (i = 0; i < numberOfSlides; i++) {
-                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "white";
+                document.getElementsByClassName("slide_pointers")[i].style.backgroundColor = "gainsboro";
             }
-            document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "gainsboro";
+            document.getElementsByClassName("slide_pointers")[slideNumber].style.backgroundColor = "grey";
         }
         function resetTheDimensions() {
             slideWidth = document.getElementsByClassName("image_slideshow")[0].parentElement.clientWidth;
@@ -372,7 +380,7 @@
                 document.getElementsByClassName("slides")[i].style.width = slideWidth + "px";
                 document.getElementsByClassName("slides")[i].style.height = slideWidth * 5.6 / 10 + "px";
             }
-            slideControls.style.height = slideWidth / 10 + "px";
+            slideControls.style.height = slideWidth / 20 + "px";
             slideControls.style.width = slideWidth + "px";
             document.getElementsByClassName("slide_control_icon")[0].style.width = slideWidth / 10 + "px";
             document.getElementsByClassName("slide_control_icon")[0].style.height = slideWidth / 10 + "px";
@@ -392,7 +400,7 @@
 
             for (i = 0; i < numberOfSlides; i++) {
                 document.getElementsByClassName("slide_pointers")[i].style.width = slideWidth / 25 + "px";
-                document.getElementsByClassName("slide_pointers")[i].style.height = slideWidth / 25 + "px";
+                document.getElementsByClassName("slide_pointers")[i].style.height = slideWidth / 200 + "px";
                 document.getElementsByClassName("slide_pointers")[i].style.marginLeft = slideWidth / 50 + "px";
             }
 
@@ -505,6 +513,16 @@
         <div id="my_apps" class="works">
             <div style="color:white;font-size:10vh; margin-bottom: 3vh;">My Apps</div>
             <div class="sld_container">
+                <div class="slide_controls">
+                    <div class="slide_control_icon"><img class="slide_control_icon_img"
+                            src="images/slide_left_img.svg" alt=""></div>
+                    <div class="slide_control_pointer_bar">
+                        <div class="slide_control_pointer_container">
+                        </div>
+                    </div>
+                    <div class="slide_control_icon"><img class="slide_control_icon_img"
+                            src="images/slide_right_img.svg" alt=""></div>
+                </div>
             <div class="slide_cntrl" onmouseover="clearsTheInterval();" onmouseout="startsTheInterval();"><img src="images/slide_left_img.svg" alt="" onclick="prevSlide();"></div>
             <div class="works_inside">
                 <!----------------------------------------------Slideshow------------------------------------------------------------------------->
@@ -519,16 +537,6 @@
                         <img class="slides" src="images/dummy.jpg" alt="">
                         <img class="slides" src="images/dummy.jpg" alt="">
                         <img class="slides" src="images/dummy.jpg" alt="">
-                    </div>
-                    <div class="slide_controls">
-                        <div class="slide_control_icon"><img class="slide_control_icon_img"
-                                src="images/slide_left_img.svg" alt=""></div>
-                        <div class="slide_control_pointer_bar">
-                            <div class="slide_control_pointer_container">
-                            </div>
-                        </div>
-                        <div class="slide_control_icon"><img class="slide_control_icon_img"
-                                src="images/slide_right_img.svg" alt=""></div>
                     </div>
                 </div>
                 <!---------------------------------------------------------------------------------------------------->
