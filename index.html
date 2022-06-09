@@ -148,6 +148,7 @@
         }
         .slide_controls{
             position: absolute; bottom:0px;left:0px;z-index:99;margin-left:20%;background-color: transparent;
+            display: flex; align-items: center; justify-content: center;
         }
         .slide_control_icon{
             display: none;
@@ -157,6 +158,7 @@
         }
         .slide_control_pointer_container{
             background-color: transparent;
+            display: flex; align-items: center; justify-content: center;
         }
         .works_inside {
             width: 60%;
@@ -392,7 +394,7 @@
             document.getElementsByClassName("slide_control_icon")[1].style.height = slideWidth / 10 + "px";
 
             document.getElementsByClassName("slide_control_pointer_bar")[0].style.width = (slideWidth - slideWidth / 5) + "px";
-            document.getElementsByClassName("slide_control_pointer_bar")[0].style.height = slideWidth / 10 + "px";
+            //document.getElementsByClassName("slide_control_pointer_bar")[0].style.height = slideWidth / 10 + "px";
 
             document.getElementsByClassName("slide_control_icon_img")[0].style.width = slideWidth / 20 + "px";
             document.getElementsByClassName("slide_control_icon_img")[0].style.height = slideWidth / 20 + "px";
@@ -404,13 +406,15 @@
             for (i = 0; i < numberOfSlides; i++) {
                 document.getElementsByClassName("slide_pointers")[i].style.width = slideWidth / 25 + "px";
                 document.getElementsByClassName("slide_pointers")[i].style.height = slideWidth / 200 + "px";
-                document.getElementsByClassName("slide_pointers")[i].style.marginLeft = slideWidth / 50 + "px";
+                document.getElementsByClassName("slide_pointers")[i].style.marginLeft = slideWidth / 100 + "px";
+                document.getElementsByClassName("slide_pointers")[i].style.marginRight = slideWidth / 100 + "px";
             }
 
             //document.getElementsByClassName("slide_control_pointer_container")[0].style.width = (slideWidth/16 + slideWidth/50)*numberOfSlides+"px";
-            document.getElementsByClassName("slide_control_pointer_container")[0].style.marginLeft = (((slideWidth - slideWidth / 5) - (slideWidth / 25 + slideWidth / 50) * numberOfSlides) / 2 - slideWidth / 50) + "px";
-            document.getElementsByClassName("slide_control_pointer_container")[0].style.height = slideWidth / 10 + "px";
-            document.getElementsByClassName("slide_control_pointer_container")[0].style.paddingTop = (slideWidth / 11 - slideWidth / 25) / 2 + "px";
+            //document.getElementsByClassName("slide_control_pointer_container")[0].style.marginLeft = (((slideWidth - slideWidth / 5) - (slideWidth / 25 + slideWidth / 50) * numberOfSlides) / 2 - slideWidth / 50) + "px";
+            //document.getElementsByClassName("slide_control_pointer_container")[0].style.height = slideWidth / 10 + "px";
+            document.getElementsByClassName("slide_control_pointer_container")[0].style.width="100%";
+            //document.getElementsByClassName("slide_control_pointer_container")[0].style.paddingTop = (slideWidth / 11 - slideWidth / 25) / 2 + "px";
 
             slidesContainer.style.transform = "translateX(-" + slideWidth * slideNumber + "px)";
         }
