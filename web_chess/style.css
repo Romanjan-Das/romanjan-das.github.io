@@ -14,3 +14,14 @@ body{
 .chess_piece_icon{
     width: 80%; height: 80%;
 }
+#victory_message{
+    display: none; position: fixed; width: 512px; height: 512px; z-index: 2; align-items: center; justify-content: center;
+    font-size: larger; background-color: rgba(0, 0, 0, 0.500); color: white;flex-direction: column;
+}
+#the_message{
+    background-color: white; color: blue; font-weight: bolder;display: flex;align-items: center;justify-content: center;
+    flex-direction: column;padding: 50px;text-align: center;
+}
+button{
+    margin-top: 30px;cursor: pointer;
+}

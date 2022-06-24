@@ -3,6 +3,10 @@ function main(){
     set_box_properties();
     set_chesspieces_in_initial_position();
 }
+function replay(){
+    set_box_properties(); set_chesspieces_in_initial_position();
+    document.getElementById("victory_message").style.display="none";
+}
 
 function load_board(){
     var i=0; var j=0;
@@ -450,7 +454,7 @@ function set_chesspieces_in_initial_position(){
 var p=0;/* <--previously selected cell number */ var is_an_item_selected=false;
 var turn_of_colour="seashell";
 function select_box(i){
-    var temp_box_i; var temp_box_p; var box_colour;
+    var temp_box_i; var temp_box_p; var box_colour; var victory_message; var victory_condition=false;
     if(is_an_item_selected==true && (document.getElementById("cell_number_"+(i)).style.backgroundColor=="yellow")){
         reset_box_colours();
         is_an_item_selected=false;
@@ -460,6 +464,18 @@ function select_box(i){
         if((document.getElementById("cell_number_"+(i)).style.backgroundColor=="cyan")||(document.getElementById("cell_number_"+(i)).style.backgroundColor=="magenta")){
             temp_box_i=eval("box.cell_"+i);
             temp_box_p=eval("box.cell_"+p);
+            console.log(temp_box_i.item_colour+" "+temp_box_i.item_type);
+            if(temp_box_i.item_type=="king"){
+                if(temp_box_i.item_colour=="seashell"){
+                    victory_message="BLACKS WIN";
+                    victory_condition=true;
+                }
+                else if(temp_box_i.item_colour=="saddlebrown"){
+                    victory_message="WHITES WIN";
+                    victory_condition=true;
+                }
+            }
+            console.log(victory_message+" "+victory_condition);
             temp_box_i.item_exists=temp_box_p.item_exists;
             temp_box_i.item_type=temp_box_p.item_type;
             temp_box_i.item_colour=temp_box_p.item_colour;
@@ -483,6 +499,11 @@ function select_box(i){
             reset_box_colours();
             is_an_item_selected=false;
             p=0;
+            if(victory_condition){
+                //window.alert(victory_message);
+                document.getElementById("victory_message").style.display="flex";
+                document.getElementById("final_victory_message").innerHTML="Hurray!!!<br><br>"+victory_message;
+            }
         }
     }
     else if(is_an_item_selected==false){
