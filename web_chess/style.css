@@ -6,8 +6,8 @@ body{
     position: fixed; z-index: 1; opacity: 0;
 }
 .shadow_board{
-    display:flex;flex-direction: column;width: 512px;height: 512px;border-top:1px black solid;border-left:1px black solid;
-    position: fixed; z-index: 0; background-color: transparent; top: 8px; left: 8px;
+    display:flex;flex-direction: column;width: fit-content;height: fit-content;border-top:1px black solid;border-left:1px black solid;
+    position: fixed; z-index: 0; background-color: transparent;
 }
 .row{
     display: flex;flex-direction: row;width: 512px;height:64px;box-sizing: border-box;
@@ -45,3 +45,30 @@ button{
     position: fixed; top: 550px; left: 202px; border: 1px black solid; padding: 3px; color: darkgreen; width: 120px; text-align: center;
     font-size: larger;
 }
+
+@media only screen and (orientation:portrait) {
+    .row{
+        width:96vw; height: 12vw;
+    }
+    .shadow_row{
+        width: 96vw; height: 12vw;
+    }
+    .box{
+        width: 12vw; height: 12vw;
+    }
+    .shadow_box{
+        width: 12vw; height: 12vw;
+    }
+    #victory_message{
+        width: 96vw; height: 96vw;
+    }
+    #the_message{
+        padding: 9vw;
+    }
+    button{
+        margin-top: 5vw;
+    }
+    #turn_indicator{
+        top: 110vw; left: 30vw; width: 40vw;
+    }
+  }
