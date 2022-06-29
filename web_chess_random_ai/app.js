@@ -144,57 +144,65 @@ function ai_turn(){
     var i; var arr=new Array(); var min=0; var max; var rand;
     var arr2=new Array(); var rand2; var min2; var max2;
     var arr2_turn=false;
-    for(i=1;i<65;i++){
-        if(eval("box.cell_"+i+".item_colour")=="black"){
-            arr.push(i);
+    var t1=setTimeout(() => {
+        for(i=1;i<65;i++){
+            if(eval("box.cell_"+i+".item_colour")=="black"){
+                arr.push(i);
+            }
         }
-    }
-    max=arr.length-1;
-    rand=Math.floor(Math.random()*(max-min))+min;
-    select_box(arr[rand]);
-    for(i=1;i<65;i++){
-        if(document.getElementById("cell_number_"+i).style.backgroundColor=="magenta" && eval("box.cell_"+i+".item_type")=="king"){
-            select_box(i);
-            break;
+        max=arr.length-1;
+        rand=Math.floor(Math.random()*(max-min))+min;
+        select_box(arr[rand]);
+    }, 1000);
+    var t2=setTimeout(() => {
+        for(i=1;i<65;i++){
+            if(document.getElementById("cell_number_"+i).style.backgroundColor=="magenta" && eval("box.cell_"+i+".item_type")=="king"){
+                select_box(i);
+                break;
+            }
+            if(document.getElementById("cell_number_"+i).style.backgroundColor=="magenta" && eval("box.cell_"+i+".item_type")=="queen"){
+                select_box(i);
+                break;
+            }
+            if(document.getElementById("cell_number_"+i).style.backgroundColor=="magenta" && eval("box.cell_"+i+".item_type")=="rook"){
+                select_box(i);
+                break;
+            }
+            if(document.getElementById("cell_number_"+i).style.backgroundColor=="magenta" && eval("box.cell_"+i+".item_type")=="bishop"){
+                select_box(i);
+                break;
+            }
+            if(document.getElementById("cell_number_"+i).style.backgroundColor=="magenta" && eval("box.cell_"+i+".item_type")=="knight"){
+                select_box(i);
+                break;
+            }
+            if(document.getElementById("cell_number_"+i).style.backgroundColor=="magenta" && eval("box.cell_"+i+".item_type")=="pawn"){
+                select_box(i);
+                break;
+            }
+            if(document.getElementById("cell_number_"+i).style.backgroundColor=="cyan" ||document.getElementById("cell_number_"+i).style.backgroundColor=="magenta"){
+                arr2.push(i);
+                arr2_turn=true;
+            }
         }
-        if(document.getElementById("cell_number_"+i).style.backgroundColor=="magenta" && eval("box.cell_"+i+".item_type")=="queen"){
-            select_box(i);
-            break;
+        if(arr2_turn){
+            min2=0; max2=arr2.length-1;
+            rand2=Math.floor(Math.random()*(max2-min2))+min2;
+            select_box(arr2[rand2]);
         }
-        if(document.getElementById("cell_number_"+i).style.backgroundColor=="magenta" && eval("box.cell_"+i+".item_type")=="rook"){
-            select_box(i);
-            break;
+        for(i=1;i<65;i++){
+            if(document.getElementById("cell_number_"+i).style.backgroundColor=="yellow"){
+                console.log("yellow");
+                select_box(i);
+                ai_turn();
+                break;
+            }
         }
-        if(document.getElementById("cell_number_"+i).style.backgroundColor=="magenta" && eval("box.cell_"+i+".item_type")=="bishop"){
-            select_box(i);
-            break;
-        }
-        if(document.getElementById("cell_number_"+i).style.backgroundColor=="magenta" && eval("box.cell_"+i+".item_type")=="knight"){
-            select_box(i);
-            break;
-        }
-        if(document.getElementById("cell_number_"+i).style.backgroundColor=="magenta" && eval("box.cell_"+i+".item_type")=="pawn"){
-            select_box(i);
-            break;
-        }
-        if(document.getElementById("cell_number_"+i).style.backgroundColor=="cyan" ||document.getElementById("cell_number_"+i).style.backgroundColor=="magenta"){
-            arr2.push(i);
-            arr2_turn=true;
-        }
-    }
-    if(arr2_turn){
-        min2=0; max2=arr2.length-1;
-        rand2=Math.floor(Math.random()*(max2-min2))+min2;
-        select_box(arr2[rand2]);
-    }
+    }, 2000);
 
-    for(i=1;i<65;i++){
-        if(document.getElementById("cell_number_"+i).style.backgroundColor=="yellow"){
-            console.log("yellow");
-            break;
-        }
-    }
 
+
+    
 }
 
 function rook_movement(i){
