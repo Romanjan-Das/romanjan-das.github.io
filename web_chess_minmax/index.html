@@ -9,8 +9,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="main();">
+    <div id="blank_screen_2">
+        <div id="message">
+            <div id="inner_message"></div>
+            <button id="replay_button" onclick="window.location.reload();">Replay</button>
+        </div>
+    </div>
     <div id="blank_screen">
-        <img id="loading_image" src="assets/Loading.gif" alt="" srcset="">
+        <div id="loading_image"><div id="anim"></div>Computer's turn..</div>
     </div>
     <div id="board"></div>
     <audio id="victory_sound">

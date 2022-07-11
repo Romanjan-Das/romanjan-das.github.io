@@ -1,5 +1,5 @@
 var arr=[-4,-3,-2,-5,-6,-2,-3,-4,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,4,3,2,5,6,2,3,4];
-//var arr=[0,-1,-1,-1,0,0,0,-2,0,-4,0,0,-6,0,0,0,0,0,0,0,-4,0,0,0,0,0,0,0,5,0,0,0,1,1,1,0,0,0,3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+//var arr=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 function main(){
     create_board();
     populate_board();
@@ -14,7 +14,7 @@ function create_board(){
         img.setAttribute("id","img_"+i);
         j.setAttribute("class","box");
         j.setAttribute("id","box_"+i);
-        j.setAttribute("onclick","select("+i+"); pl_sel("+i+");");
+        j.setAttribute("onclick","pl_sel("+i+"); select_white("+i+");");
         j.appendChild(img);
         board.appendChild(j);
     }
@@ -103,6 +103,9 @@ function select(i){
                 if(i==move[k]){ n=arr[i];
                     arr[i]=arr[prev];
                     arr[prev]=0;
+                    if(arr[i]==1 && i<8){
+                        arr[i]=5;
+                    }
                     reset_board_colours();
                     populate_board();
                     chosen=false;
@@ -548,14 +551,17 @@ function ai(){
     for(s=0;s<r_s1.length;s++){
         u=arr[r_s1[s][1]]; v=arr[r_s1[s][0]];
         arr[r_s1[s][1]]=v; arr[r_s1[s][0]]=0;
-        for(x=0;x<r_s2[s].length;x++){
-            uu=arr[r_s2[s][x][1]]; vv=arr[r_s2[s][x][0]];
-            arr[r_s2[s][x][1]]=vv; arr[r_s2[s][x][0]]=0;
-            find_moves(3,s,x,0,-10);
-            arr[r_s2[s][x][1]]=uu; arr[r_s2[s][x][0]]=vv;
-            r[x]=r_temp; r_temp=[];
-    
+        if(r_s2[s]!=undefined){
+            for(x=0;x<r_s2[s].length;x++){
+                uu=arr[r_s2[s][x][1]]; vv=arr[r_s2[s][x][0]];
+                arr[r_s2[s][x][1]]=vv; arr[r_s2[s][x][0]]=0;
+                find_moves(3,s,x,0,-10);
+                arr[r_s2[s][x][1]]=uu; arr[r_s2[s][x][0]]=vv;
+                r[x]=r_temp; r_temp=[];
+        
+            }        
         }
+
         arr[r_s1[s][1]]=u; arr[r_s1[s][0]]=v;
     }
     //console.log("---------------------------------------------------------------------------");
@@ -574,6 +580,12 @@ function find_moves(stat,b,c,ii,jj){
             for(w=0;w<y[x][1].length;w++){
                 u=arr[y[x][0]]; v=arr[y[x][1][w]];
                 arr[y[x][1][w]]=arr[y[x][0]]; arr[y[x][0]]=0;
+                if(arr[y[x][1][w]]==-1 && y[x][1][w]>55){
+                    arr[y[x][1][w]]=-5;
+                }
+                if(arr[y[x][1][w]]==1 && y[x][1][w]<8){
+                    arr[y[x][1][w]]=5;
+                }
                 kk=total_value(arr);
                 r_temp.push([y[x][0],y[x][1][w]]);
                 if(stat==1){
@@ -619,38 +631,58 @@ function find_moves(stat,b,c,ii,jj){
 function evaluate_moves(){
     var x,y,z,tmp3=1000,tmp2=-1000,tmp1=1000,ab=0,cd=0,ef=0;
     for(x=0;x<r_s3.length;x++){
-        for(y=0;y<r_s3[x].length;y++){
-            for(z=0;z<r_s3[x][y].length;z++){
-                if(tmp3>r_s3[x][y][z][2]){
-                    tmp3=r_s3[x][y][z][2];
+        if(r_s3[x]!=undefined){
+            for(y=0;y<r_s3[x].length;y++){
+                for(z=0;z<r_s3[x][y].length;z++){
+                    if(tmp3>r_s3[x][y][z][2]){
+                        tmp3=r_s3[x][y][z][2];
+                    }
                 }
+                if(r_s2[x][y][2]>tmp3){
+                    r_s2[x][y][2]=tmp3;
+                }
+                tmp3=1000;
             }
-            r_s2[x][y][2]=tmp3;
-            tmp3=1000;
         }
+
     }
 
     for(x=0;x<r_s2.length;x++){
-        for(y=0;y<r_s2[x].length;y++){
-            if(tmp2<r_s2[x][y][2]){
-                tmp2=r_s2[x][y][2];
+        if(r_s2[x]!=undefined){
+            for(y=0;y<r_s2[x].length;y++){
+                if(tmp2<r_s2[x][y][2]){
+                    tmp2=r_s2[x][y][2];
+                }
             }
+            if(r_s1[x][2]<tmp2){
+                r_s1[x][2]=tmp2;
+            }
+            tmp2=-1000;
         }
-        r_s1[x][2]=tmp2;
-        tmp2=-1000;
-    }
 
+    }
     for(x=0;x<r_s1.length;x++){
         if(tmp1>r_s1[x][2]){
             ab=r_s1[x][0];
             cd=r_s1[x][1];
             tmp1=r_s1[x][2];
         }
+        if(arr[r_s1[x][1]]==6){
+            ab=r_s1[x][0];
+            cd=r_s1[x][1];
+            break;
+        }
     }
     tmp1=1000;
     //console.log(ab+","+cd);
     ef=arr[cd];
     arr[cd]=arr[ab]; arr[ab]=0;
+    if(arr[cd]==-1 && cd>55){
+        arr[cd]=-5;
+    }
+    if(arr[cd]==1 && cd<8){
+        arr[cd]=5;
+    }
     populate_board();
     if(ef==6){
         setTimeout(() => {
@@ -668,29 +700,35 @@ function total_value(a){
 }
 var victory_sound;
 function victory_message(){
-    window.alert("Hurray! You win!!");
+    //window.alert("Hurray! You win!!");
+    document.getElementById("inner_message").innerHTML="Hurray! You win!!";
+    document.getElementById("blank_screen_2").style.display="flex";
     victory_sound=document.getElementById("victory_sound");
     victory_sound.play();
 }
 function defeat_message(){
-    window.alert("Game Over. Computer wins!!");
+    //window.alert("Game Over. Computer wins!!");
+    document.getElementById("inner_message").innerHTML="Game Over.<br>Computer wins!!";
+    document.getElementById("blank_screen_2").style.display="flex";
     victory_sound=document.getElementById("victory_sound");
     victory_sound.play();
 }
-var sel_st=0; var prev_sel=0;
 function pl_sel(p){
-    sel_st++;
-    if(sel_st==1){
-        prev_sel=p;
-    }
-    else if(sel_st==2 && prev_sel!=p){
-        sel_st=0;
+    if(document.getElementById("box_"+p).style.backgroundColor=="cyan"){
         document.getElementById("blank_screen").style.display="flex";
-    }
-    else if(sel_st==2){
-        sel_st=0;
     }
 }
 function ai_sel(){
     document.getElementById("blank_screen").style.display="none";
+}
+var white_selected=false;
+function select_white(p){
+    if(arr[p]>0){
+        select(p);
+        white_selected=true;
+    }
+    else if(white_selected && arr[p]<=0 && (document.getElementById("box_"+p).style.backgroundColor=="cyan" || document.getElementById("box_"+p).style.backgroundColor=="magenta")){
+        select(p);
+        white_selected=false;
+    }
 }
