@@ -34,6 +34,9 @@
             display: flex; align-items: center; justify-content: center;
             background-color: white;
         }
+        .L1{
+            width: 60px;
+        }
         .L2{
             margin-left: 200px; margin-right: 200px; width: 60px;
         }
@@ -69,12 +72,6 @@
             }
 
             var L1_arr=[]; var L2_arr=[]; var L3_arr=[]; var L4_arr=[];
-            for(x=0;x<3;x++){
-                L2_arr[x]=Math.floor(Math.random() * 9) + 1;
-            }
-            for(x=0;x<9;x++){
-                L3_arr[x]=Math.floor(Math.random() * 9) + 1;
-            }
             for(x=0;x<27;x++){
                 L4_arr[x]=Math.floor(Math.random() * 9) + 1;
             }
@@ -82,12 +79,7 @@
             for(x=1;x<28;x++){
                 document.getElementById("L4_"+x).innerHTML=L4_arr[x-1];
             }
-            for(x=1;x<10;x++){
-                document.getElementById("L3_"+x).innerHTML=L3_arr[x-1];
-            }
-            for(x=1;x<4;x++){
-                document.getElementById("L2_"+x).innerHTML=L2_arr[x-1];
-            }
+
             var z=[]; var u=10;
             for(x=1;x<28;x++){
                 z.push(L4_arr[x-1]);
@@ -97,21 +89,13 @@
                             u=z[y];
                         }
                     }
-                    if(u<L3_arr[x/3-1]){
-                        console.log(u);
-                        console.log(L3_arr[x/3-1])
-                    }
-                    if(u<L3_arr[x/3-1]){
-                        L3_arr[x/3-1]=u;
-                    }
-                    document.getElementById("L3_"+x/3).innerHTML=document.getElementById("L3_"+x/3).innerHTML+"=>"+u+"=>"+L3_arr[x/3-1];
-                    console.log(u);
-                    console.log(z);
+                    L3_arr[x/3-1]=u;    
+                    document.getElementById("L3_"+x/3).innerHTML=L3_arr[x/3-1];
                     z=[]; u=10;
                 }
             }
 
-            z=[];u=-10;
+            u=-10;
             for(x=1;x<10;x++){
                 z.push(L3_arr[x-1]);
                 if(x%3==0){
@@ -120,16 +104,8 @@
                             u=z[y];
                         }
                     }
-                    if(u>L2_arr[x/3-1]){
-                        console.log(u);
-                        console.log(L2_arr[x/3-1])
-                    }
-                    if(u>L2_arr[x/3-1]){
-                        L2_arr[x/3-1]=u;
-                    }
-                    document.getElementById("L2_"+x/3).innerHTML=document.getElementById("L2_"+x/3).innerHTML+"=>"+u+"=>"+L2_arr[x/3-1];
-                    console.log(u);
-                    console.log(z);
+                    L2_arr[x/3-1]=u;
+                    document.getElementById("L2_"+x/3).innerHTML=L2_arr[x/3-1];
                     z=[]; u=-10;
                 }
             }
