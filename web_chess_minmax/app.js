@@ -123,7 +123,7 @@ function select(i){
                         
                         setTimeout(() => {
                             ai();
-                        }, 1000);
+                        }, 200);
                         
                        //ai();
                     }
